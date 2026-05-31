@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Selector</title>
+  <style>
+  /* Universal Selector */
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  /* Type selector */
+  h3{
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* ID Selector */
+  #heading{
+    color: green;
+  }
+  /* Class Selector */
+  .highlight{
+    background-color: yellow;
+  }
+  /* Grouping selector */
+  h1,
+  h3{
+    letter-spacing: 5px;
+  }
+  /* Attribute Selector */
+  input[type]{
+    background-color: aqua;
+  }
+  input[type="text"]{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  </style>
+</head>
+<body>
+  <h1 id="heading">Belajar Simple Selectors</h1>
+
+  <h3>Judul Artikel 1</h3>
+  <p>Paragraf biasa tanpa class.</p>
+
+  <h3>Judul Artikel 2</h3>
+  <p class="highlight">Paragraf ini diberi tanda stabilo menggunakan Class .highlight</p>
+  <span class="highlight">Span ini juga pakai class .highlight</span>
+
+  <hr>
+
+  <form>
+    <label>Nama (Input Teks):</label>
+    <input type="text" name="nama" placeholder="Masukkan Nama">
+    <br><br>
+    <label>Password:</label>
+    <input type="password" name="password">
+  </form>
+
+  <br>
+
+  <p>
+    <i>Ini elemen miring</i> dan <span>ini elemen span</span>.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, incidunt?
+  </p>
+
+  <a href="https://wpucourse.id">WPUCourse.id</a>
+</body>
+</html>
