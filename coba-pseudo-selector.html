@@ -37,6 +37,27 @@
     input[type="checkbox"]:checked+label{
       color: blue;
     }
+    input[type="email"]:valid{
+      background-color: lightgreen;
+    }
+    input[type="email"]:invalid{
+      background-color: lightcoral;
+    }
+    ul li:first-child{
+      background-color: black;
+      color:white;
+    }
+    ul li:nth-child(even){
+      background-color: lightblue;
+    }
+    ul li:last-child{
+      background-color: lightgreen;
+    }
+    .kotak-kosong:empty{
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
   </style>
 </head>
 
@@ -101,7 +122,7 @@
 
   <h3>Empty State (:empty)</h3>
   <p>Kotak pink di bawah ini muncul karena elemennya KOSONG.</p>
-  <div class="kotak-kosong"></div>
+  <div class="kotak-kosong">aaaaaaaaaaaa</div>
 
 </body>
 
