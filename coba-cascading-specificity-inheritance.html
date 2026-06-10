@@ -15,26 +15,44 @@
   </style>
 </head>
 <body>
-  <!--  C A S C A D E 
-    Cascade : Algoritma yang menentukan style yang mana yang akan dipilih css untuk di jalankan
-    
-==> Position dan order of appearence = CSS akan memilih style yang yang paling akhir di berikan untuk di jalankan. Contoh:-->
-<button type="submit" class="button1">Aku adalah tombol</button>
-<!-- 
-==>Origin = Aturan CSS datang dari mana?, bisa dari abrowser agent, extensions, atau yang kita tulis sendiri. Urutan spesifiknya adalah:
-  1. User agent Styles (Bawaan browser)
-      ==> Style dasar yang sudah ada di setiap browser. Misal, link berwarna biru dan H1 yang memili jarak cukup lebar
-  2. Local user Styles (Settingan Pengguna)
-      ==> Style yang bersal dari pengaturan laptop/hp/extensi google. Misal, settingan dark mode
-  3. Authored CSS (Kode kita)
-      ==> Kode CSS yang kita tulis sendiri
-  4. Authored !important
-      ==> ketika kita menambahkan !important pada kode kita
-  5. Local user styles !important
-      ==> !important pada pengaturan laptop/hp/extensi google
-  6. User agent !important
-      ==> Style !important bawaan browser
-==> Spesificity = Menentukan selector mana yang lebih berat/spesifik 
-==> Importence = Aturan CSS yang menggunakan !Importance-->
-</body>
+  <!-- 
+  CSS (CASCADE, SPESIFICITY, INHERITANCE) 
+
+  ===== C A S C A D E ===== 
+  Cascade : Algoritma yang menentukan style yang mana yang akan dipilih css untuk di jalankan
+  
+        ==> Position dan order of appearence = CSS akan memilih style yang yang paling akhir di berikan untuk di jalankan. Contoh:-->
+        <button type="submit" class="button1">Aku adalah tombol</button>
+        <!-- 
+          ==>Origin = Aturan CSS datang dari mana?, bisa dari abrowser agent, extensions, atau yang kita tulis sendiri. Urutan spesifiknya adalah:
+          1. User agent Styles (Bawaan browser)
+          ==> Style dasar yang sudah ada di setiap browser. Misal, link berwarna biru dan H1 yang memili jarak cukup lebar
+          2. Local user Styles (Settingan Pengguna)
+          ==> Style yang bersal dari pengaturan laptop/hp/extensi google. Misal, settingan dark mode
+          3. Authored CSS (Kode kita)
+          ==> Kode CSS yang kita tulis sendiri
+          4. Authored !important
+          ==> ketika kita menambahkan !important pada kode kita
+              5. Local user styles !important
+                  ==> !important pada pengaturan laptop/hp/extensi google
+                  6. User agent !important
+                  ==> Style !important bawaan browser
+                  ==> Spesificity = Menentukan selector mana yang lebih berat/spesifik 
+                  ==> Importence = Aturan CSS yang menggunakan !Importance-->
+                </body>
+    <!-- 
+  ===== SPESIFICITY ===== 
+    SPESIFICITY : Seberapa berat suatu atribut yang dipanggil berdasarkan tingkat spesifiknya
+    Tingkatannya:
+      1. inline style                      = 1000 point
+      2. id                                = 100 point
+      3. Class, pseudo-class, atribut      = 10
+      4. Tag dan pseudo-element            = 1
+      5. Wildcard(*) atau combinators(+/>) = 0
+    ====> web untuk menghitung Spesificity = https://specificity.keegan.st/ -->
+    <!-- 
+    ===== INHERITANCE ===== 
+    INHERITANCE : Style element parent yang diwarisi pada anak anaknya
+    inherit digunakan agak anak nya benar benar mewarisi style parentnya
+    -->
 </html>
