@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overflow</title>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .visible,
+    .auto,
+    .scroll,
+    .hidden{
+      background-color: lightgreen;
+      width: 200px;
+      height: 150px;
+    }
+    .visible{
+      overflow: visible;
+    }
+    .auto{
+      overflow: auto;
+    }
+    .scroll{
+      overflow: scroll;
+    }
+    .hidden{
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+    <h1>visible</h1>
+    <p>overflow: visible; mengizinkan konten di dalam elemen untuk melebihi batas elemen tersebut. Ini berarti konten yang melebihi ukuran elemen akan terlihat dan dapat diakses oleh pengguna</p>
+    <p class="visible">overflow: visible; mengizinkan konten di dalam elemen untuk melebihi batas elemen tersebut. Ini berarti konten yang melebihi ukuran elemen akan terlihat dan dapat diakses oleh pengguna.overflow: visible; mengizinkan konten di dalam elemen untuk melebihi batas elemen tersebut. Ini berarti konten yang melebihi ukuran elemen akan terlihat dan dapat diakses oleh pengguna.</p>
+  <br><br><br><br><br><br><br><br><br><hr>
+    <h1>auto</h1>
+    <p>overflow: auto;: Konten di dalam elemen dapat melebihi batas elemen, tetapi pengguna dapat menggerakkan konten dengan scrollbar jika diperlukan</p>
+    <p class="auto">overflow: auto;: Konten di dalam elemen dapat melebihi batas elemen, tetapi pengguna dapat menggerakkan konten dengan scrollbar jika diperlukanoverflow: auto;: Konten di dalam elemen dapat melebihi batas elemen, tetapi pengguna dapat menggerakkan konten dengan scrollbar jika diperlukan</p>
+  <br><br><br><br><br><br><br><br><br><hr>
+    <h1>scroll</h1>
+    <p>overflow: scroll;: Konten di dalam elemen selalu ditampilkan dengan scrollbar, bahkan jika konten tidak melebihi batas elemen.</p>
+    <p class="scroll">overflow: scroll;: Konten di dalam elemen selalu ditampilkan dengan scrollbar, bahkan jika konten tidak melebihi batas elemen.overflow: scroll;: Konten di dalam elemen selalu ditampilkan dengan scrollbar, bahkan jika konten tidak melebihi batas elemen.</p>
+  <br><br><br><br><br><br><br><br><br><hr>
+    <h1>hidden</h1>
+    <p>overflow: hidden;: Konten di dalam elemen tidak dapat melebihi batas elemen dan tidak ditampilkan oleh pengguna</p>
+    <p class="hidden">overflow: hidden;: Konten di dalam elemen tidak dapat melebihi batas elemen dan tidak ditampilkan oleh pengguna.overflow: hidden;: Konten di dalam elemen tidak dapat melebihi batas elemen dan tidak ditampilkan oleh pengguna.</p>
+  <br><br><br><br><br><br><br><br><br><hr>
+</body>
+</html>
