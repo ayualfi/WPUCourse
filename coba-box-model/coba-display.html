@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display</title>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f6f6f6;
+    }
+    div{
+      background-color: lightgreen;
+      width: 100px;
+      padding: 20px;
+      border: 2px solid darkgreen;
+    }
+    .cobaSpan{
+      background-color: greenyellow
+    }
+    .cobaInlineBlok{
+      display: inline-block;
+      background-color: lightgreen;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ==== Display Blok, inline, dan inline-blok ====
+   #Display Blok
+   ==>Akan memenuhi satu baris
+   ==>Element setelahnya akan berada di bawahnya
+   ==>Widht dan height nya bisa diatur, jika tidak maka akan memenuhi lebar browser/parent
+   ==>Didalam display blok, kita bisa menyimpan tag dengan elemen inline, inline-blok, atau bahkan blok
+   ==>Beberapa tag dengan display defaultnya adalah blok "h1-h6, p, ol, ul, li, form, hr, div"
+   ==>Contoh-->
+   <section>
+   <h1>Mencoba Display Blok</h1>
+      <div>
+        <p><strong>Lorem</strong>, ipsum dolor sit amet consectetur adipisicing elit. Nobis eveniet possimus vitae repellat, architecto fugit nesciunt <span>natus?</span> Doloribus consequuntur qui facilis atque ab, iste itaque molestias, non error culpa architecto!</p>
+      </div>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, blanditiis?</p>
+   </section>
+<hr>
+   <!-- 
+   #Display Inline
+   ===> akan meneruskan, tidak membuat baris baru
+   ===> Lebar dan tinggi elemennya mengikuti konten
+   ===> Lebar dan tinggi tidak bisa diatur
+   ===> Margin dan padding hanya berpengaruh secara horizontal tidak vertikal 
+   ===> beberapa tag dengan display defaultnya adalah inline : a, b, i, em, strong, img, input, span, select, label, butto, dll
+   ===> contoh-->
+   <section>
+      <h1>Mencoba Display Inline</h1>
+      <a href="#">Home</a>
+      <a href="#">About us</a>
+      <a href="#">Contact us</a>
+      <a href="#">Our products</a>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <span class="cobaSpan">Neque</span>, omnis?</p>
+   </section>
+<hr>
+   <!--  
+   #Display inline-blok
+   ====> Tidak ada element yang secara default punya display: inline-blok
+   ====> Ubah scara manual
+   ====> Perilaku dasarnya sama dengan display inline, tapi
+   ====> inline-blok : dapat diatur tinggi dan lebarnya (perpaduan dengan blok)
+   ====> contoh-->
+   <section>
+      <h1>Mencoba Display Inline-blok</h1>
+      <a href="#" class="cobaInlineBlok">Home</a>
+      <a href="#" class="cobaInlineBlok">About us</a>
+      <a href="#" class="cobaInlineBlok">Contact us</a>
+      <a href="#" class="cobaInlineBlok">Our products</a>
+   </section>
+<hr>
+</body>
+</html>
