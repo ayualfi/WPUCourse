@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Margin</title>
+  <!-- 
+  # Urutan setiap element pada css = Content -> padding -> border -> outline -> margin
+  ==> Margin adalah satu satunya atribut yang nilai minusnya akan dijalankan
+  ==> Margin : jarak diluar border -->
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .kotak1{
+      width: 300px;
+      height: 300px;
+      background-color: lightgreen;
+      margin-top: 30px;
+      margin-bottom: 40px;
+      margin-left: 10px;
+      margin-right: 20px;
+      /* short hand 
+      ===> urutan jika ada 4 nilai : top -> right -> buttom -> left
+      ===> urutan jika ada 3 nilai : top -> right&left -> buttom
+      ===> urutan jika ada 2 nilai : top -> buttom
+      ===> urutan jika ada 1 nilai : berlaku untuk top, buttom, left, and right*/
+    }
+    .kotak2{
+      width: 200px;
+      height: 200px;
+      background-color: salmon;
+      margin-top: 20px; /* --> tidak akan berlaku, karena css tidak menjumlahkan margin-bottomnya kotak 1 dan margin-topnya kotak 2, tapi akan menjalankan nilai yang lebih besar, jadi tertindik bukan menambah*/
+      margin-top: -80px ; /* --> lihat bagaimana nilai minus ini dijalankan*/
+    }
+    .kotak3{
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      margin: auto; /*dengan nilai auto, maka margin kanan dan kiri akan diatur secara otomatis oleh css, sehingga akan tepat berada di tengah*/
+    }
+  </style>
+</head>
+<body>
+  <div class="kotak1">1</div>
+  <div class="kotak2">2</div>
+  <div class="kotak3">3</div>
+</body>
+</html>
