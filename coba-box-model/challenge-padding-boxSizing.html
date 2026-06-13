@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Belajar Padding dan Box-Sizing</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Strichpunkt+Sans&display=swap');
     body{
       font-family: Arial, Helvetica, sans-serif;
       background-color: #dddcdc;
@@ -12,10 +13,11 @@
     main{
       padding: 25px;
       border: 2px solid transparent;
-      width: 30%;
+      width: 35%;
       height: auto;
       border-radius: 20px;
       background-color: white;
+      margin: auto;
     }
     .fotoSepatuCoklat{
       border-radius: 20px;
@@ -23,9 +25,63 @@
       height: auto;
     }
     .merkSepatu{
-      color: #40302a;
+      font-family: "Strichpunkt Sans", sans-serif;
+      color: #f5a704;
       font-weight: bolder;
       font-size: 20px;
+      letter-spacing: 2px;
+    }
+    .deskripsiSepatu{
+      color: #848383;
+      line-height: 20px;
+    }
+    .hr{
+      color: #848383;
+    }
+    .hargaSepatu{
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    span{
+      font-size: 15px;
+      text-decoration: line-through;
+      color: #848383;
+      margin-left: 5px;
+    }
+    .pilihUkuran{
+      font-weight: bold;
+    }
+    a{
+      display: inline-block;
+      text-align: center;
+      width: 28px;
+      height: 30px;
+      text-decoration: none;
+      color: black;
+      border: 1px solid #848383;
+      border-radius: 5px;
+      padding: 3px;
+      margin: 7px 4px ;
+      transition: all 0.3s ease;
+    }
+    a:hover{
+      background-color: black;
+      color: white;
+    }
+    button{
+      margin-top: 20px;
+      border: 2px solid transparent;
+      padding: 20px;
+      background-color: black;
+      color: white;
+      font-size: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    button:hover{
+      border-color: black;
+      background-color: white;
+      color: black;
     }
   </style>
 </head>
@@ -35,12 +91,12 @@
       <img src="../assets/sepatu.jpg" alt="sepatu coklat" class="fotoSepatuCoklat">
       <p class="merkSepatu">Boston Aero Street</p>
       <h2>Air Max Essential</h2>
-      <p>Sepatu Aerostreet adalah sepatu yang dirancang dengan fokus pada kenyamanan dan kualitas. Sepatu ini memiliki desain yang modern dan stylish, dengan tampilan yang elegan dan menawan. Sepatu Aerostreet dibuat dari bahan berkualitas tinggi yang tahan lama dan nyaman dipakai.</p>
+      <p class="deskripsiSepatu">Sepatu Aerostreet adalah sepatu yang dirancang dengan fokus pada kenyamanan dan kualitas. Sepatu ini memiliki desain yang modern dan stylish.</p>
     </section>
     <hr>
     <section>
-      <p>Rp.1.899.000<span>Rp.2.299.000</span></p>
-      <p>Pilih Ukuran (US)</p>
+      <p class="hargaSepatu">Rp.1.899.000<span>Rp.2.299.000</span></p>
+      <p class="pilihUkuran">Pilih Ukuran (US):</p>
       <a href="#">8</a>
       <a href="#">9</a>
       <a href="#">10</a>
