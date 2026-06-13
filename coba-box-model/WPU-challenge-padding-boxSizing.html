@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Padding dan Box-Sizing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Strichpunkt+Sans&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #dddcdc;
+    }
+    article{
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      width: 40%;
+      height: auto;
+      border-radius: 20px;
+      background-color: white;
+      margin: auto;
+      box-shadow: 0 10px 20px rgb(0 0 0/0.1);
+    }
+    figure{
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+    figure img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .merkSepatu{
+      font-family: "Strichpunkt Sans", sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #f5a704;
+    }
+    .deskripsi h2{
+      font-weight: bolder;
+      margin-bottom: 15px;
+    }
+    .deskripsiSepatu{
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #d3d3d3;
+      padding-bottom: 20px;
+    }
+    .hargaArea{
+      margin-bottom: 20px;
+    }
+    .hargaUpdate{
+      font-weight: bolder;
+      font-size: 22px;
+    }
+    .hargaAsli{
+      color: #666;
+      font-size: 13px;
+      margin-left: 10px;
+    }
+    fieldset{
+      border: none;
+    }
+    .pilihUkuran{
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    fieldset input[type="radio"]{
+      display: none;
+    }
+    fieldset label{
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #666;
+      text-align: center;
+      line-height: 44px;
+      border-radius: 5px;
+      margin-right: 4px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    fieldset input[type="radio"]:checked+label{
+      background-color: black;
+      color: white;
+    }
+    button{
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      border-radius: 10px;
+      font-weight: bolder;
+      font-size: 13px;
+      transition: 0.3s ease;
+    }
+    button:hover{
+      border-color: black;
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <section class="deskripsi">
+      <figure>
+        <img src="../assets/sepatu.jpg" alt="sepatu coklat" class="fotoSepatuCoklat">
+      </figure>
+
+      <p class="merkSepatu">Boston Aero Street</p>
+      <h2>Air Max Essential</h2>
+
+      <p class="deskripsiSepatu">Sepatu Aerostreet adalah sepatu yang dirancang dengan fokus pada kenyamanan dan kualitas. Sepatu ini memiliki desain yang modern dan stylish.</p>
+
+    </section>
+
+    <section>
+
+      <div class="hargaArea">
+        <span class="hargaUpdate">Rp.1.899.000</span>
+        <del class="hargaAsli">Rp.2.299.000</del>
+      </div>
+      
+      <form action="">
+        <fieldset>
+        <legend class="pilihUkuran">Pilih Ukuran (US):</legend>
+
+        <input type="radio" name="ukuran" id="u8" value="8">
+        <label for="u8">8</label>
+
+        <input type="radio" name="ukuran" id="u9" value="9">
+        <label for="u9">9</label>
+
+        <input type="radio" name="ukuran" id="u10" value="10">
+        <label for="u10">10</label>
+
+        <input type="radio" name="ukuran" id="u11" value="11">
+        <label for="u11">11</label>
+
+        <input type="radio" name="ukuran" id="u12" value="12">
+        <label for="u12">12</label>
+
+      </fieldset>
+      </form>
+    </section>
+    <button>TAMBAHKAN KE KERANJANG</button>
+  </article>
+</body>
+</html>
