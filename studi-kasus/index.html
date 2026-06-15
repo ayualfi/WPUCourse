@@ -5,21 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Here is Sandhika</title>
   <style>
+    :root{
+      --tosca:#008080;
+      --gradien:#1cbe6e;
+      --dark-tosca:#0a5050;
+      --yellow:#fee685;
+      --neon-green:#05df72;
+      --dark-green:#1a2626;
+      --darker-green:#0e1a1a;
+      --bright-gray:#f6f8f8;
+      --dark-gray:#ebeded;
+      --darker-gray:#5b6b6b;
+      --white:#fff;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
     *{
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    body{
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+    .artist-name{
+      margin:50px auto;
+      text-align: center;
+      color: transparent;
+    }
+    .artist-name h1{
+      background-image: linear-gradient(to right, var(--tosca) 40%, var(--gradien));
+      background-clip:text;
+      font-weight: bolder;
+      font-size: 50px;
+    }
+    .artist-name p{
+      color: var(--darker-gray);
+      letter-spacing: 2px;
+    }
+    /*  */
+    .brief-profil{
+      text-align: center;
+      background-color: var(--bright-gray);
+      border: 1px solid var(--dark-gray);
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgb(0, 128, 128, 0.2);
+    }
+    .brief-profil img{
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgb(0, 128, 128, 0.2);
+      margin-bottom: 20px;
+    }
+    .brief-profil p{
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      line-height: 25px; 
+    }
+    .brief-profil .first-description{
+      margin-bottom: 20px;
+    }
+    .first-description span{
+      font-size: 20px;
+      font-weight: bolder;
+      background-image: linear-gradient(to right, var(--tosca) 50%, var(--gradien));
+      background-clip: text;
+      color: transparent;
+    }
+    .stat-section{
+      text-align: center;
+      margin: 30px auto;
+    }
+    .youtube-followers,
+    .github-followers,
+    .linkedin-followers{
+      display: inline-block;
+      background-color: var(--dark-green);
+      padding: 30px;
+      border: 2px solid var(--darker-green);
+      border-radius: 15px;
+      color: var(--white);
+      width: 400px;
+      height: auto;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .youtube-followers span,
+    .github-followers span,
+    .linkedin-followers span{
+      color: var(--neon-green);
+      font-size: 30px;
+      font-weight: bolder;
+    }
   </style>
 </head>
 <body>
-  <header class="introducing-artist">
+  <header class="artist-name">
     <h1>Sandhika Galih</h1>
-    <p>Web Developer</p>
+    <p>Lecturer | Web Developer</p>
   </header>
   <main class="main-profil-card">
     <section class="brief-profil">
-      <figure>
+      <figure class="">
         <img src="assets/Sandhika.jpeg" alt="foto Sandhika">
         <figcaption>
           <p class="first-description"><span>Sandhika Galih Amalga, S.T., M.T.</span> adalah seorang dosen Teknik Informatika di Universitas Pasundan (UNPAS) Bandung yang dikenal luas sebagai edukator teknologi terkemuka di Indonesia. Beliau merupakan pendiri kanal YouTube Web Programming UNPAS (WPU), sebuah platform edukasi pemrograman terbesar di tanah air yang menginspirasi jutaan talenta digital. Melalui cara penyampaian yang santai, terstruktur, dan mudah dipahami, ia sukses mendobrak anggapan bahwa belajar coding itu sulit. Berkat kontribusi besarnya dalam dunia web development, Google secara resmi menobatkan beliau sebagai salah satu Google Developer Expert (GDE). Kini, ia terus aktif mengajar, membangun komunitas developer, dan mengembangkan platform WPU Course.</p>
@@ -29,15 +117,63 @@
     </section>
     <section class="stat-section">
       <div class="youtube-followers">
-        <p><span>997rb</span> Youtube Suscriber</p>
+        <p><span>997rb</span><br><br> Youtube Suscriber</p>
       </div>
-      <div class="youtube-followers">
-        <p><span>18.4k</span> Github Followers</p>
+      <div class="github-followers">
+        <p><span>18.4k</span><br><br> Github Followers</p>
       </div>
-      <div class="youtube-followers">
-        <p><span>136rb</span> Linkedin</p>
+      <div class="linkedin-followers">
+        <p><span>136rb</span><br><br>Linkedin</p>
+      </div>
+    </section>
+    <section class="portfolio-section">
+      <div class="karya-portofolio-pribadi">
+        <figure>
+          <img src="assets/portfolio probadi - Kak Dhika.PNG" alt="portofolio-pribadi-Sandhika">
+          <figcaption>
+            <h5>Portfolio Sandhika</h5>
+            <p>Portofolio pribadi yang dibuat menggunakan Tailwind CSS untuk menampilkan profil, keahlian, dan portofolio</p>
+            <a href="https://sandhikagalih.github.io/portfolio-tailwind-css/">Visit</a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="karya-portofolio-pribadi">
+        <figure>
+          <img src="assets/WpuKarya- Kak Dhika.PNG" alt="portofolio-pribadi-Sandhika">
+          <figcaption>
+            <h5>Chief Academic Officer of WPU</h5>
+            <p>Platform kursus belajar web development yang dipandu langsung membantu pemula memahami pemrograman dari dasar.</p>
+            <a href="https://wpucourse.id/">Visit</a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="karya-portofolio-pribadi">
+        <figure>
+          <img src="assets/karyaGithub - Kak Dhika.PNG" alt="portofolio-pribadi-Sandhika">
+          <figcaption>
+            <h5>Sandhika's Github</h5>
+            <p>Repository kode dan proyek web yang dikerjakan atau gunakan sebagai bahan ajar di sini</p>
+            <a href="https://github.com/sandhikagalih">Visit</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="social-link-section">
+      <h4>Contact at</h4>
+      <div class="instagram">
+        <a href="https://www.instagram.com/sandhikagalih/">Sandhika's Instagram</a>
+      </div>
+      <div class="youtube">
+        <a href="https://www.youtube.com/@sandhikagalihWPU">Sandhika's Youtube</a>
+      </div>
+      <div class="Linkedin">
+        <a href="https://id.linkedin.com/in/sandhikagalih">Sandhika's Linkedin</a>
       </div>
     </section>
   </main>
+  <footer class="closing">
+    <span>&copy; 2026 Sandhika Galih</span>
+    <p>created by <span class="creator">Ayu Alfi H</span></p>
+  </footer>
 </body>
 </html>
