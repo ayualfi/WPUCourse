@@ -73,6 +73,7 @@
       background-clip: text;
       color: transparent;
     }
+    /* stat-section */
     .stat-section{
       text-align: center;
       margin: 30px auto;
@@ -111,18 +112,33 @@
       margin: 0 auto;
       padding: 30px;
     }
+    .portfolio-section h2{
+      color: var(--white);
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+    .portfolio-section h2 span{
+      color: var(--neon-green);
+    }
     .karya-portofolio-pribadi{
       display: inline-block;
       width: 30%;
       margin: 10px;
-      border: 2px solid var(--gradien);
+      border: 2px solid var(--darker-gray);
       border-radius: 20px;
       background-color: var(--dark-green);
-      color: var(--white);
+      color: var(--dark-gray);
+      transition: all 0.3s ease;
+    }
+    .karya-portofolio-pribadi:hover{
+      transform: translateY(-10px);
+      border-color: var(--neon-green);
+      background-color: var(--dark-green);
     }
     .karya-portofolio-pribadi img{
       width: 100%;
-      height: 600px;
+      height: 500px;
+      object-fit: cover;
       border-radius: 20px 20px 0 0;
     } 
     .karya-portofolio-pribadi figure figcaption{
@@ -130,7 +146,89 @@
       text-align: left;
       width: 100%;
       height: auto;
-      font-size: 18px;
+      font-size: 16px;
+    }
+    .karya-portofolio-pribadi figure figcaption p{
+      height: 100px;
+    }
+    .karya-portofolio-pribadi figure figcaption h4{
+      color: var(--neon-green);
+      margin-bottom: 5px;
+    }
+    .karya-portofolio-pribadi figure figcaption a{
+      background-color: var(--tosca);
+      border-radius: 10px;
+      width: 100px;
+      height: auto;
+      padding: 10px;
+      text-align: center;
+      display: block;
+      color: var(--dark-gray);
+      text-decoration: none;
+      font-size: 17px;
+      transition: all 0.3s ease;
+    }
+    .karya-portofolio-pribadi figure figcaption a:hover{
+      transform: scale(1.1);
+    }
+    /* social-link-section */
+    .social-link-section{
+      text-align: center;
+      margin: 20px auto;
+      width: 80%;
+
+    }
+    .social-link-section h4{
+      color: var(--darker-green);
+      font-size: 35px;
+      margin: 20px auto;
+    }
+    .social-link-section h4 span{
+      color: var(--tosca);
+    }
+    .social-link-section a{
+      background-color: var(--dark-tosca);
+      width: 30%;
+      padding: 10px;
+      margin-right: 10px;
+      text-decoration: none;
+      color: var(--white);
+      border-radius: 10px;
+      height: 70px;
+      line-height: 50px;
+      display: inline-block;
+      color: var(--dark-gray);
+      font-size: 20px;
+      border: 2px solid var(--darker-gray);
+      transition: all 0.3s ease;
+    }
+    .social-link-section a:hover{
+      border-color: var(--dark-gray);
+      transform: translateY(-10px);
+      background-color: var(--tosca);
+    }
+    /* closing */
+    .closing{
+      background-color: var(--dark-green);
+      color: var(--dark-gray);
+      width: 80%;
+      text-align: center;
+      line-height: 60px;
+      margin: 10px auto;
+      border-radius: 10px;
+    }
+    .closing hr{
+      width: 70%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .personal{
+      display: inline-block;
+      letter-spacing: 3px;
+      color: var(--darker-gray);
+    }
+    .personal p span{
+      color: var(--neon-green);
     }
   </style>
 </head>
@@ -161,11 +259,12 @@
       </div>
     </section>
     <section class="portfolio-section">
+      <h2>Karya dan Projek <span>Sandhika Galih</span></h2>
       <div class="karya-portofolio-pribadi">
         <figure>
           <img src="assets/portfolio probadi - Kak Dhika.PNG" alt="portofolio-pribadi-Sandhika">
           <figcaption>
-            <h5>Portfolio Sandhika</h5>
+            <h4>Portfolio Sandhika</h4>
             <p>Portofolio pribadi yang dibuat menggunakan Tailwind CSS untuk menampilkan profil, keahlian, dan portofolio</p>
             <a href="https://sandhikagalih.github.io/portfolio-tailwind-css/">Visit</a>
           </figcaption>
@@ -173,9 +272,9 @@
       </div>
       <div class="karya-portofolio-pribadi">
         <figure>
-          <img src="assets/WpuKarya- Kak Dhika.PNG" alt="portofolio-pribadi-Sandhika">
+          <img src="assets/WpuKarya- Kak Dhika.PNG" alt="WPU-Sandhika">
           <figcaption>
-            <h5>Chief Academic Officer of WPU</h5>
+            <h4>Chief Academic Officer of WPU</h4>
             <p>Platform kursus belajar web development yang dipandu langsung membantu pemula memahami pemrograman dari dasar.</p>
             <a href="https://wpucourse.id/">Visit</a>
           </figcaption>
@@ -183,9 +282,9 @@
       </div>
       <div class="karya-portofolio-pribadi">
         <figure>
-          <img src="assets/karyaGithub - Kak Dhika.PNG" alt="portofolio-pribadi-Sandhika">
+          <img src="assets/karyaGithub - Kak Dhika.PNG" alt="Github-Sandhika">
           <figcaption>
-            <h5>Sandhika's Github</h5>
+            <h4>Sandhika's Github</h4>
             <p>Repository kode dan proyek web yang dikerjakan atau gunakan sebagai bahan ajar di sini</p>
             <a href="https://github.com/sandhikagalih">Visit</a>
           </figcaption>
@@ -193,21 +292,18 @@
       </div>
     </section>
     <section class="social-link-section">
-      <h4>Contact at</h4>
-      <div class="instagram">
-        <a href="https://www.instagram.com/sandhikagalih/">Sandhika's Instagram</a>
-      </div>
-      <div class="youtube">
-        <a href="https://www.youtube.com/@sandhikagalihWPU">Sandhika's Youtube</a>
-      </div>
-      <div class="Linkedin">
-        <a href="https://id.linkedin.com/in/sandhikagalih">Sandhika's Linkedin</a>
-      </div>
+      <h4>Knowing <span>Him </span>More at</h4>
+        <a href="https://www.instagram.com/sandhikagalih/" class="ig">Sandhika's Instagram</a>
+        <a href="https://www.youtube.com/@sandhikagalihWPU" class="yt">Sandhika's Youtube</a>
+        <a href="https://id.linkedin.com/in/sandhikagalih" class="link">Sandhika's Linkedin</a>
     </section>
   </main>
   <footer class="closing">
-    <span>&copy; 2026 Sandhika Galih</span>
-    <p>created by <span class="creator">Ayu Alfi H</span></p>
+    <p>&copy; 2026 Sandhika Galih</p>
+    <hr>
+    <div class="personal">
+      <p>developed by <span class="developer">ayualfi</span>  | supported by <span class="supporter">nuruljadidunv</span> | tasked by <span class="tasked">sandhika</span></p>
+    </div>
   </footer>
 </body>
 </html>
