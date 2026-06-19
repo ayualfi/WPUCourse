@@ -4,233 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Here is Sandhika</title>
-  <style>
-    :root{
-      --tosca:#008080;
-      --gradien:#1cbe6e;
-      --dark-tosca:#0a5050;
-      --yellow:#fee685;
-      --neon-green:#05df72;
-      --dark-green:#1a2626;
-      --darker-green:#0e1a1a;
-      --bright-gray:#f6f8f8;
-      --dark-gray:#ebeded;
-      --darker-gray:#5b6b6b;
-      --white:#fff;
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body{
-      font-family: "Plus Jakarta Sans", sans-serif;
-    }
-    .artist-name{
-      margin:50px auto;
-      text-align: center;
-      color: transparent;
-    }
-    .artist-name h1{
-      background-image: linear-gradient(to right, var(--tosca) 40%, var(--gradien));
-      background-clip:text;
-      font-weight: bolder;
-      font-size: 50px;
-    }
-    .artist-name p{
-      color: var(--darker-gray);
-      letter-spacing: 2px;
-    }
-    /*  */
-    .brief-profil{
-      text-align: center;
-      background-color: var(--bright-gray);
-      border: 1px solid var(--dark-gray);
-      border-radius: 10px;
-      padding: 20px;
-      width: 80%;
-      margin: 0 auto;
-      box-shadow: 0 4px 12px rgb(0, 128, 128, 0.2);
-    }
-    .brief-profil img{
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgb(0, 128, 128, 0.2);
-      margin-bottom: 20px;
-    }
-    .brief-profil p{
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      line-height: 25px; 
-    }
-    .brief-profil .first-description{
-      margin-bottom: 20px;
-    }
-    .first-description span{
-      font-size: 20px;
-      font-weight: bolder;
-      background-image: linear-gradient(to right, var(--tosca) 50%, var(--gradien));
-      background-clip: text;
-      color: transparent;
-    }
-    /* stat-section */
-    .stat-section{
-      text-align: center;
-      margin: 30px auto;
-    }
-    .youtube-followers,
-    .github-followers,
-    .linkedin-followers{
-      display: inline-block;
-      background-color: var(--dark-green);
-      padding: 30px;
-      border: 2px solid var(--darker-green);
-      border-radius: 15px;
-      color: var(--white);
-      width: 400px;
-      height: auto;
-      font-size: 18px;
-      letter-spacing: 1px;
-    }
-    .youtube-followers span,
-    .github-followers span,
-    .linkedin-followers span{
-      color: var(--neon-green);
-      font-size: 30px;
-      font-weight: bolder;
-    }
-    .stat-section hr{
-      width: 100px;
-      text-align: center;
-      margin: 20px auto;
-    }
-    /* portfolio-section */
-    .portfolio-section{
-      text-align: center;
-      background-color: var(--darker-green);
-      width: 100%;
-      margin: 0 auto;
-      padding: 30px;
-    }
-    .portfolio-section h2{
-      color: var(--white);
-      font-size: 35px;
-      margin-bottom: 20px;
-    }
-    .portfolio-section h2 span{
-      color: var(--neon-green);
-    }
-    .karya-portofolio-pribadi{
-      display: inline-block;
-      width: 30%;
-      margin: 10px;
-      border: 2px solid var(--darker-gray);
-      border-radius: 20px;
-      background-color: var(--dark-green);
-      color: var(--dark-gray);
-      transition: all 0.3s ease;
-    }
-    .karya-portofolio-pribadi:hover{
-      transform: translateY(-10px);
-      border-color: var(--neon-green);
-      background-color: var(--dark-green);
-    }
-    .karya-portofolio-pribadi img{
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 20px 20px 0 0;
-    } 
-    .karya-portofolio-pribadi figure figcaption{
-      padding: 20px;
-      text-align: left;
-      width: 100%;
-      height: auto;
-      font-size: 16px;
-    }
-    .karya-portofolio-pribadi figure figcaption p{
-      height: 100px;
-    }
-    .karya-portofolio-pribadi figure figcaption h4{
-      color: var(--neon-green);
-      margin-bottom: 5px;
-    }
-    .karya-portofolio-pribadi figure figcaption a{
-      background-color: var(--tosca);
-      border-radius: 10px;
-      width: 100px;
-      height: auto;
-      padding: 10px;
-      text-align: center;
-      display: block;
-      color: var(--dark-gray);
-      text-decoration: none;
-      font-size: 17px;
-      transition: all 0.3s ease;
-    }
-    .karya-portofolio-pribadi figure figcaption a:hover{
-      transform: scale(1.1);
-    }
-    /* social-link-section */
-    .social-link-section{
-      text-align: center;
-      margin: 20px auto;
-      width: 80%;
-
-    }
-    .social-link-section h4{
-      color: var(--darker-green);
-      font-size: 35px;
-      margin: 20px auto;
-    }
-    .social-link-section h4 span{
-      color: var(--tosca);
-    }
-    .social-link-section a{
-      background-color: var(--dark-tosca);
-      width: 30%;
-      padding: 10px;
-      margin-right: 10px;
-      text-decoration: none;
-      color: var(--white);
-      border-radius: 10px;
-      height: 70px;
-      line-height: 50px;
-      display: inline-block;
-      color: var(--dark-gray);
-      font-size: 20px;
-      border: 2px solid var(--darker-gray);
-      transition: all 0.3s ease;
-    }
-    .social-link-section a:hover{
-      border-color: var(--dark-gray);
-      transform: translateY(-10px);
-      background-color: var(--tosca);
-    }
-    /* closing */
-    .closing{
-      background-color: var(--dark-green);
-      color: var(--dark-gray);
-      width: 80%;
-      text-align: center;
-      line-height: 60px;
-      margin: 10px auto;
-      border-radius: 10px;
-    }
-    .closing hr{
-      width: 70%;
-      text-align: center;
-      margin: 0 auto;
-    }
-    .personal{
-      display: inline-block;
-      letter-spacing: 3px;
-      color: var(--darker-gray);
-    }
-    .personal p span{
-      color: var(--neon-green);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="artist-name">
@@ -266,7 +40,7 @@
           <figcaption>
             <h4>Portfolio Sandhika</h4>
             <p>Portofolio pribadi yang dibuat menggunakan Tailwind CSS untuk menampilkan profil, keahlian, dan portofolio</p>
-            <a href="https://sandhikagalih.github.io/portfolio-tailwind-css/">Visit</a>
+            <a href="https://sandhikagalih.github.io/portfolio-tailwind-css/">Visit Now</a>
           </figcaption>
         </figure>
       </div>
@@ -276,7 +50,7 @@
           <figcaption>
             <h4>Chief Academic Officer of WPU</h4>
             <p>Platform kursus belajar web development yang dipandu langsung membantu pemula memahami pemrograman dari dasar.</p>
-            <a href="https://wpucourse.id/">Visit</a>
+            <a href="https://wpucourse.id/">Visit Now</a>
           </figcaption>
         </figure>
       </div>
@@ -286,7 +60,7 @@
           <figcaption>
             <h4>Sandhika's Github</h4>
             <p>Repository kode dan proyek web yang dikerjakan atau gunakan sebagai bahan ajar di sini</p>
-            <a href="https://github.com/sandhikagalih">Visit</a>
+            <a href="https://github.com/sandhikagalih">Visit Now</a>
           </figcaption>
         </figure>
       </div>
