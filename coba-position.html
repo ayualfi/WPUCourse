@@ -61,6 +61,7 @@
       width: 324px;
       height: 324px;
       margin: 20px auto;
+      position: relative;
     }
     /* Dia membuat elemennya maju, dan tetap relatif terhadap posisi awalnya. Posisi awalnya tidak menjadi kosong */
     .coba-relatif{
@@ -68,6 +69,13 @@
       left: 50px;
     }
     /* Dia membuat elemennya maju, tapi relatif terhadap parent yang posisinya juga non-static. Jadi tempat dia yang sebelumnya habis. */
+    .coba-absolute-1{
+      position: absolute;
+      left: 20px;
+    }
+    .coba-absolute-2{
+      position:absolute;
+      top:0;
   </style>
 </head>
 
@@ -94,7 +102,7 @@
   <h2>4. Position: Absolute (Relatif ke Parent)</h2>
   <div class="container">
     <div class="box satu">1</div>
-    <div class="box dua">2</div>
+    <div class="box dua" coba-absolute-2>2</div>
     <div class="box tiga">3</div>
   </div>
 
