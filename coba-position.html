@@ -63,19 +63,32 @@
       margin: 20px auto;
       position: relative;
     }
-    /* Dia membuat elemennya maju, dan tetap relatif terhadap posisi awalnya. Posisi awalnya tidak menjadi kosong */
+    /* Relatif : Dia membuat elemennya maju, dan tetap relatif terhadap posisi awalnya. Posisi awalnya tidak menjadi kosong */
     .coba-relatif{
       position: relative;
       left: 50px;
     }
-    /* Dia membuat elemennya maju, tapi relatif terhadap parent yang posisinya juga non-static. Jadi tempat dia yang sebelumnya habis. */
+    /* Absolut : Dia membuat elemennya maju, tapi relatif terhadap parent yang posisinya juga non-static. Jadi tempat dia yang sebelumnya habis. */
     .coba-absolute-1{
       position: absolute;
       left: 20px;
     }
     .coba-absolute-2{
       position:absolute;
-      top:0;
+      right: 0px;
+    }
+    /* Fixed : Element akan terkunci pada posisi yng ditentukan, jika tidak ditentukan maka tidak akan terkunci dimanapun*/
+    .coba-fixed{
+      position: fixed;
+      top : 100px ;
+    }
+    .coba-sticky{
+      position: sticky;
+      bottom: 0;
+    }
+    /* Z-INDEX 
+    ==> Z-Index digunakan untuk menentukan posisi z suatu element. Semakin besar, maka semakin diatas*/
+
   </style>
 </head>
 
@@ -87,8 +100,8 @@
   <div class="box satu">1</div>
   <div class="box dua">2</div>
   <div class="box tiga">3</div>
-
-
+  
+  
   <h2>2. Position: Relative</h2>
   <div class="box satu">1</div>
   <div class="box dua coba-relatif">2</div>
@@ -98,14 +111,23 @@
   <div class="box satu">1</div>
   <div class="box dua coba-absolute-1">2</div>
   <div class="box tiga">3</div>
-
+  
   <h2>4. Position: Absolute (Relatif ke Parent)</h2>
   <div class="container">
     <div class="box satu">1</div>
-    <div class="box dua" coba-absolute-2>2</div>
+    <div class="box dua coba-absolute-2" >2</div>
     <div class="box tiga">3</div>
   </div>
+  
+  <h2>5. Position: Fixed (Element terkunci)</h2>
+  <div class="box satu">1</div>
+  <div class="box dua coba-fixed">2</div>
+  <div class="box tiga">3</div>
 
+  <h2>6. Position: Sticky (Element hanya terkunci pada posisi yang ditentukan)</h2>
+  <div class="box satu">1</div>
+  <div class="box dua coba-sticky">2</div>
+  <div class="box tiga">3</div>
 </body>
 
 </html>
