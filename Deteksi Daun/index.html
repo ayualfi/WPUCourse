@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deteksi Kesehatan Daun Cabai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 class="mainJudul">AI <span>Leaf</span> Detection</h1>
+        <p>Artificial Intelligence for Chili Leaf Classification</p>
+    </header>
+    <main>
+        <!-- intro -->
+        <div class="intro">
+            <h2>Deteksi Kesehatan <span>Daun Cabai</span></h2>
+            <p>Website ini menggunakan model Machine Learning yang dibuat menggunakan Google Teachable Machine untuk mengklasifikasikan kondisi daun cabai.</p>
+        </div>
+
+        <!-- deteksi -->
+        <div class="deteksi">
+            <h2>Mulai Deteksi <span>Daun</span></h2>
+            <p>Pilih salah satu metode di bawah ini.</p>
+
+            <!-- Upload Gambar -->
+            <section class="uploadGambar">
+                <label for="uploadGambar"> 📁 Pilih Dari Galeri</label>
+                <input type="file" id="uploadGambar" accept="image/*">
+            </section>
+
+            <!-- Drag and Drop -->
+             <section class="dragDrop" id="dragDrop">
+                <p>⬆ Drag & Drop gambar di sini</p>
+             </section>
+
+            <!-- Gunakan kamera -->
+             <section class="onCamera">
+                <button id="startCamera" class="startCamera">📸 Buka Kamera</button>
+                <button id="btnCapture" hidden>Ambil foto</button>
+             </section>
+            <!-- Webcam -->
+             <section id='webcam' class="webcam">
+                <video src="" id="camera" autoplay playsinline hidden></video>
+                <canvas id="canvas" hidden></canvas>
+             </section>
+            <!-- Preview gambar -->
+             <section class="previewGambar">
+                <img id="previewGambar" src="" alt="here is the leaf's preview">
+             </section>
+
+            <!-- Loading -->
+             <section class="loading" id="loading">
+                <div class="spinner"></div>
+                    <p>Sedang melakukan prediksi</p>
+             </section>
+        </div>
+
+        <!-- Hasil prediksi -->
+        <div class="hasilPrediksi">
+            <h3 class="prediksi" id="prediksi"></h3>
+            <h4 class="persenPrediksi" id="persenPrediksi"></h4>
+            <div class="detailPrediksi" id="detailPrediksi"></div>
+        </div>
+
+        <!-- Informasi hasil prediksi -->
+         <div class="informasi" id="informasi">
+            <h2>Informasi Prediksi</h2>
+            <p>Silahkan lakukan deteksi terlebih dahulu</p>
+         </div>
+    </main>
+<hr>
+    <footer>
+        <p>© 2026 <span>Ayu Alfi Hidayati</span></p>
+        <p>Powered by <span>TensorFlow.js</span> & <span>Google Teachable Machine</span></p>
+    </footer>
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
