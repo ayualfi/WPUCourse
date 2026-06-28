@@ -62,7 +62,7 @@ header P{
   padding: 25px; 
 }
 .deteksi h2{
-  border-bottom: 1px solid #b5e31e;
+  border-bottom: 1px solid var(--lime);
   width: 100%;
   margin: 0 auto;
   padding-bottom: 10px;
@@ -91,8 +91,8 @@ header P{
   display: none;
 }
 .uploadGambar label:hover{
-  background-color: #f0f7f0;
-  border-color: #388e3c;
+  background-color: var(--putihKalem);
+  border-color: var(--hijauMuda);
 }
 
 /* dragDrop */
@@ -118,7 +118,7 @@ header P{
 
 /* Efek saat kursor di atas area */
 .dragDrop:hover {
-  background-color: #f0f7f0;
+  background-color: var(--putihKalem);
   border-color: #388e3c;
 }
 /* camera */
@@ -135,7 +135,7 @@ header P{
 }
 .startCamera:hover,
 #btnCapture:hover{
-  background-color: #f0f7f0;
+  background-color: var(--putihKalem);
   border-color: #388e3c;
 }
 
