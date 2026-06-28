@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Z-Gamer | FPS Streamer</title>
+  <style>
+    /* 
+      TODO: Tulis CSS-mu di sini! 
+      Pastikan memenuhi semua REQUIREMENTS di atas.
+    */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background-image: linear-gradient(to right, rgb(27, 29, 46) 80%, rgb(35, 39, 57));
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+    .top-banner{
+      background-image: linear-gradient(to right, rgb(180, 156, 3), rgb(220, 191, 4));
+      box-shadow: 0 0 4px rgb(0, 0, 0);
+      text-shadow: 0 0 1px rgb(0, 0, 0) ;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    /* navbar */
+    .navbar{
+      border-bottom: 1px solid rgb(107, 110, 136);
+      padding: 15px;
+      background-color: rgb(38, 41, 65);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar::after{
+      display: table;
+      content: "";
+      clear: both;
+    }
+    .nav-logo{
+      float: left;
+      color: rgb(12, 41, 186);
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bolder;
+    }
+    .nav-menu{
+      float: right;
+      list-style: none;
+      border: none;
+      color: white;
+    }
+    .nav-menu li{
+      border: none;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .nav-menu a {
+      position: relative;
+      text-decoration: none;
+      color: white;
+      padding: 3px 2px;
+    }
+    /* Garis bawah */
+    .nav-menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: rgb(12, 41, 186);
+
+      /* Awalnya tidak terlihat */
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    /* Saat hover */
+    .nav-menu a:hover::after {
+      transform: scaleX(1);
+    }
+    /* bio-img */
+    .bio{
+      margin: 40px auto;
+      background-color:rgb(38, 41, 65) ;
+      width: 80%;
+      padding: 30px;
+      border: 1px solid rgb(107, 110, 136);
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px black;
+      box-shadow: 2px 2px 10px black;
+    }
+    .bio::after{
+      display: table;
+      content: "";
+      clear: both;
+    }
+    .bio .bio-img{
+      float: left;
+      width: 200px;
+      border: 7px solid rgb(12, 41, 186);
+      border-radius: 20px;
+      margin: 0 15px;
+    }
+    .bio h2{
+      font-size: 40px;
+      font-weight: 500px;
+      margin: 20px;
+      background-image: linear-gradient(to right, rgb(3, 36, 200), rgb(121, 3, 200) 35%);
+      background-clip: text;
+      color: transparent;
+    }
+    .bio p{
+      color: whitesmoke;
+      line-height: 23px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    /* card-container */
+    .card-container{
+      margin: 20px auto;
+      text-align: center;
+    }
+    .profile-wrapper{
+      margin: 0 auto;
+      width: 400px;
+      position: relative;
+    }
+    .profile-wrapper img{
+      border: 5px solid whitesmoke;
+      border-radius: 20px;
+      box-shadow: 0 0 5px whitesmoke;
+      /* box-shadow: 2 2 7px whitesmoke; */
+      width: 400px;
+    }
+    .profile-wrapper .badge{
+      background-color: red;
+      color: whitesmoke;
+      padding: 9px;
+      border-radius: 10px;
+      font-weight: bolder;
+      position: absolute;
+      top: 15px;
+      right: 10px;
+    }
+    /* schedule */
+    .schedule{
+      background-color: rgb(21, 23, 35);
+      border: 1px solid rgb(1, 22, 159);
+      width: 50%;
+      margin: 20px auto;
+      text-align: center;
+      padding: 20px;
+    }
+    .schedule h3{
+      color: whitesmoke;
+      text-shadow: 0 0 2px white;
+      margin-bottom: 20px;
+    }
+    .schedule ul{
+      list-style: none;
+      color: whitesmoke;
+    }
+    .schedule ul li{
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .schedule ul li:nth-child(even){
+      background-color: rgb(38, 41, 65);
+      padding: 5px;
+    }
+    .schedule ul b{
+      color: rgb(1, 22, 159);
+    }
+    /* gallery */
+    .gallery{
+      width: 80%;
+      text-align: center;
+      margin: 40px auto;
+    }
+    .gallery h3{
+      color: whitesmoke;
+      font-size: 25px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgb(107, 110, 136);
+    }
+    .gallery .video-item{
+      width: 250px;
+      height: auto;
+      background-color: rgb(38, 41, 65);
+      margin: 20px;
+      border: 1px solid rgb(107, 110, 136);
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .video-item img{
+      object-fit:cover;
+      width: 100%;
+      border-radius: 5px 5px 0 0;
+      
+    }
+    .video-info h4{
+      font-weight: bold;
+      color: whitesmoke;
+      font-size: 15px;
+      margin: 5px;
+    }
+    .video-info p{
+      color: whitesmoke;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .gallery{
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .video-item:hover{
+      transform: scale(1);
+    }
+    /* chat-btn */
+    .chat-btn{
+      background-color: rgb(107, 110, 136);
+      padding: 15px;
+      border-radius: 50%;
+      position: fixed;
+      right: 10px;
+      bottom:15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Promo Banner -->
+  <div class="top-banner">
+    
+�
+�
+ NEW MERCH DROP! USE CODE "ZPRO" FOR 20% OFF ALL HOODIES.
+  </div>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">Z-GAMER</a>
+    <ul class="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+  <main>
+    <!-- About Section -->
+    <section class="bio">
+      <img src="https://picsum.photos/id/65/300/300" alt="Z-Gamer Profile" class="bio-img">
+      <h2>The Legend of Z-Gamer</h2>
+      <p>Halo, saya Z-Gamer! Seorang veteran FPS yang sudah bergelut di dunia kompetitif sejak tah Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, quo libero quidem molestiae commodi vero. Necessitatibus unde voluptates fugit similique eos, ut quos repudiandae. Quia neque ipsam doloremque asperiores, alias consectetur distinctio, rem tempore at adipisci impedit ducimus, tenetur vero? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi modi obcaecati assumenda libero delectus ducimus, sapiente iusto qui. Fugiat sequi nostrum eum, laboriosam quaerat, qui, enim velit ea pariatur voluptate perspiciatis officiis.</p>
+    </section>
+    <!-- Profile Status -->
+    <section class="card-container">
+      <figure class="profile-wrapper">
+        <span class="badge">● LIVE NOW</span>
+        <img src="https://picsum.photos/id/96/800/800" alt="Main Profile Display">
+      </figure>
+    </section>
+    <!-- Weekly Schedule -->
+    <section class="schedule">
+      <h3>🎮Current Streaming Schedule</h3>
+      <ul>
+        <li>Senin: <b>19.00 - 22.00</b> (Ranked Grind)</li>
+        <li>Rabu: <b>19.00 - 22.00</b> (Aim Training)</li>
+        <li>Jumat: <b>20.00 - Late</b> (Horror Night Special)</li>
+        <li>Sabtu: <b>15.00 - 18.00</b> (Community Tournament)</li>
+      </ul>
+    </section>
+    <!-- Highlights Gallery -->
+    <section class="gallery">
+      <h3>Latest Highlights</h3>
+      
+      <figure class="video-item">
+        <img src="https://picsum.photos/id/101/400/250" alt="Clip 1">
+        <figcaption class="video-info">
+          <h4>Crazy 360 No Scope!</h4>
+          <p>1.2M Views • 12 hours ago</p>
+        </figcaption>
+      </figure>
+      <figure class="video-item">
+        <img src="https://picsum.photos/id/102/400/250" alt="Clip 2">
+        <figcaption class="video-info">
+          <h4>New Meta? Best Weapon!</h4>
+          <p>850K Views • 1 day ago</p>
+        </figcaption>
+      </figure>
+      <figure class="video-item">
+        <img src="https://picsum.photos/id/103/400/250" alt="Clip 3">
+        <figcaption class="video-info">
+          <h4>Clutch Master: 1 vs 4</h4>
+          <p>2.4M Views • 3 days ago</p>
+        </figcaption>
+      </figure>
+      
+      <figure class="video-item">
+        <img src="https://picsum.photos/id/104/400/250" alt="Clip 4">
+        <figcaption class="video-info">
+          <h4>Top 5 Stream Fails</h4>
+          <p>400K Views • 1 week ago</p>
+        </figcaption>
+      </figure>
+</section>
+</main>
+<!-- Chat Button -->
+<a href="#" class="chat-btn" title="Join Discord Support">💬</a>
+</body>
+</html>
