@@ -33,7 +33,7 @@
       background-color: rgb(38, 41, 65);
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 998;
     }
     .navbar::after{
       display: table;
@@ -134,8 +134,9 @@
     .profile-wrapper img{
       border: 5px solid whitesmoke;
       border-radius: 20px;
-      box-shadow: 0 0 5px whitesmoke;
-      /* box-shadow: 2 2 7px whitesmoke; */
+      box-shadow: 
+      0 0 4px rgb(245, 245, 245),
+      0 0 8px rgb(245, 245, 245);
       width: 400px;
     }
     .profile-wrapper .badge{
@@ -157,11 +158,6 @@
       text-align: center;
       padding: 20px;
     }
-    .schedule h3{
-      color: whitesmoke;
-      text-shadow: 0 0 2px white;
-      margin-bottom: 20px;
-    }
     .schedule ul{
       list-style: none;
       color: whitesmoke;
@@ -170,6 +166,10 @@
       margin-bottom: 10px;
       font-size: 14px;
       letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .schedule ul li:hover{
+      transform: scale(1.05);
     }
     .schedule ul li:nth-child(even){
       background-color: rgb(38, 41, 65);
@@ -184,7 +184,10 @@
       text-align: center;
       margin: 40px auto;
     }
-    .gallery h3{
+    .gallery:hover .video-item:not(:hover){
+      opacity: 0.8;
+    }
+    :is(main) h3{
       color: whitesmoke;
       font-size: 25px;
       margin-bottom: 20px;
@@ -192,13 +195,14 @@
       border-bottom: 1px solid rgb(107, 110, 136);
     }
     .gallery .video-item{
+      display: inline-block;
+      cursor: pointer;
       width: 250px;
       height: auto;
       background-color: rgb(38, 41, 65);
       margin: 20px;
       border: 1px solid rgb(107, 110, 136);
       border-radius: 5px;
-      display: inline-block;
     }
     .video-item img{
       object-fit:cover;
@@ -218,7 +222,6 @@
       margin-bottom: 10px;
     }
     .gallery{
-      cursor: pointer;
       transition: all 0.3s ease;
     }
     .video-item:hover{
@@ -232,6 +235,7 @@
       position: fixed;
       right: 10px;
       bottom:15px;
+      z-index: 999;
     }
   </style>
 </head>
