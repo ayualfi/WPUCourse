@@ -9,22 +9,19 @@
   --putihKalem:#f9fbf9;
 }
 *{
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body{
+  box-sizing: border-box;
   font-family: "Plus Jakarta Sans", sans-serif;
   text-align: center;
 }
 
 /* HEADER */
-.mainJudul{
-  background-image: linear-gradient(to right, var(--hijauMuda) 50%, var(--hijauSangatMuda));
-  background-clip: text;
-  font-size: 50px;
-  color: transparent;
-  margin-bottom: 5px;
+header{
+  padding: 15px;
 }
 header P{
   color: var(--hijauSangatTua);
@@ -32,6 +29,14 @@ header P{
   letter-spacing: 2px;
   margin-top: 5px;
 }
+.mainJudul{
+  background-image: linear-gradient(to right, var(--hijauTua) 30%, var(--lime));
+  background-clip: text;
+  font-size: 50px;
+  color: transparent;
+  margin-bottom: 5px;
+}
+
 /* MAIN */
 .intro{
   border: 2px solid var(--hijauSangatTua);
