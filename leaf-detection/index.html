@@ -8,12 +8,24 @@
 </head>
 <body>
     <header>
-        <h1 class="mainJudul">AI <span>Leaf</span> Detection</h1>
-        <p>An Artificial Intelligence for Chili Leaf Classification</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#fromGallery">from Gallery</a></li>
+                <li><a href="#dragDrop">Drag and Drop</a></li>
+                <li><a href="#Camera">Camera</a></li>
+                <li><a href="#result">Result</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h1 class="mainJudul">AI <span>Leaf</span> Detection</h1>
+            <p>An Artificial Intelligence for Chili Leaf Classification</p>
+        </section>
     </header>
     <main>
+        
         <!-- intro -->
-        <div class="intro">
+        <div class="intro" id="about">
             <h2>Deteksi Kesehatan <span>Daun Cabai</span></h2>
             <p>Website ini menggunakan model Machine Learning yang dibuat menggunakan Google Teachable Machine untuk mengklasifikasikan kondisi daun cabai.</p>
         </div>
@@ -24,7 +36,7 @@
             <p>Pilih salah satu metode di bawah ini.</p>
 
             <!-- Upload Gambar -->
-            <section class="uploadGambar">
+            <section class="uploadGambar" id="fromGallery">
                 <label for="uploadGambar"> Pilih Dari Galeri</label>
                 <input type="file" id="uploadGambar" accept="image/*">
             </section>
@@ -35,7 +47,7 @@
              </section>
 
             <!-- Gunakan kamera -->
-             <section class="onCamera">
+             <section class="onCamera" id="Camera">
                 <button id="startCamera" class="startCamera">Buka Kamera</button>
                 <button id="btnCapture" hidden>Ambil foto</button>
              </section>
@@ -57,7 +69,7 @@
         </div>
 
         <!-- Hasil prediksi -->
-        <div class="hasilPrediksi">
+        <div class="hasilPrediksi" id="result">
             <h3 class="prediksi" id="prediksi"></h3>
             <h4 class="persenPrediksi" id="persenPrediksi"></h4>
             <div class="detailPrediksi" id="detailPrediksi"></div>

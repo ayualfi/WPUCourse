@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 :root{
-  --hijauMuda:#019935;
+  --hijauMuda:rgb(1, 153, 53);
   --hijauSangatMuda:#afe692;
   --hijauTua:#037c69;
   --hijauSangatTua:#004142;
-  --hijauTuaSekali:#003233;
+  --hijauTuaSekali:rgb(0, 50, 51);
   --lime:#b5e31e;
   --putihKalem:#f9fbf9;
 }
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body{
@@ -21,20 +22,64 @@ body{
 
 /* HEADER */
 header{
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-image: linear-gradient(to top, var(--hijauMuda), var(--hijauSangatMuda));
+}
+header nav{
+  display: flex;
+  justify-content: center;
   padding: 15px;
+  border-bottom: 1px solid var(--hijauTuaSekali);
+  background-color: rgb(0, 50, 51, 90%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+}
+header nav ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+header nav a{
+  color: var(--lime);
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+header nav a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 1px;
+  bottom: -2px;
+  width: 0;
+  background-color: var(--lime);
+  transition: 0.3s ease;
+}
+header nav a:hover::after{
+  width: 100%;
 }
 header P{
   color: var(--hijauSangatTua);
   font-size: 20px;
-  letter-spacing: 2px;
-  margin-top: 5px;
+  letter-spacing: 5px;
+  color: var(--putihKalem);
 }
 .mainJudul{
-  background-image: linear-gradient(to right, var(--hijauTua) 30%, var(--lime));
+  background-image: linear-gradient(to right, var(--hijauTuaSekali) 30%, var(--lime));
   background-clip: text;
-  font-size: 50px;
+  font-size: 60px;
   color: transparent;
-  margin-bottom: 5px;
+  padding-top: 150px;
 }
 
 /* MAIN */
