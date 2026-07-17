@@ -26,7 +26,7 @@ header{
   display: flex;
   flex-direction: column;
   gap: 30px;
-  background-image: linear-gradient(to top, var(--hijauMuda), var(--hijauSangatMuda));
+  background-image: linear-gradient(to bottom, var(--hijauMuda), var(--hijauTuaSekali));
 }
 header nav{
   display: flex;
@@ -72,44 +72,137 @@ header P{
   color: var(--hijauSangatTua);
   font-size: 20px;
   letter-spacing: 5px;
-  color: var(--putihKalem);
+  color: var(--hijauSangatTua);
+  font-weight: bold;
 }
 .mainJudul{
-  background-image: linear-gradient(to right, var(--hijauTuaSekali) 30%, var(--lime));
+  background-image: linear-gradient(to right, var(--hijauTuaSekali) 40%, var(--lime));
   background-clip: text;
   font-size: 60px;
   color: transparent;
   padding-top: 150px;
 }
+/* gambar daun */
+.slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    margin-top: 50px;
+}
 
+.slide-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+    will-change: transform; /* bantu browser render lebih mulus */
+}
+.slideGrup {
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;/* jaga jarak antar grup sama dengan gap antar item */
+}
+.slide-track section{
+  width: 200px;
+  flex-shrink: 0;
+  border: 1px solid var(--hijauSangatTua);
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  background-color:#aec0ae;
+  box-shadow: 0 0 10px rgb(174, 192, 174, 0.5);
+}
+.slide-track img{
+  width: 200px;
+  height: 160px;
+  object-fit:cover;
+  overflow: hidden;
+}
+.slide-track section p{
+  font-size: 14px;
+  margin: 10px;
+  letter-spacing: 0px;
+}
+
+@keyframes scroll {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
 /* MAIN */
 .intro{
-  border: 2px solid var(--hijauSangatTua);
+  display: flex;
+  margin: 130px auto;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgb(3, 124, 105, 0.2);
-  width: 60%;
-  text-align: center;
-  margin: 10px auto;
-  padding: 10px;
+  height: 100%;
+  padding: 20px;
+  width: 98%;
 }
-.intro h2{
-  font-size: 26px;
+.intro .deskripsi{
+  text-align: left;
+  margin: 30px;
+  width: 50%;
+}
+.deskripsi h2{
+  margin-bottom: 60px;
+  font-size: 40px;
   color: var(--hijauTua);
 }
 .intro h2 span{
   color: var(--hijauSangatTua);
 }
 .intro p{
-  line-height: 20px;
+  line-height: 25px;
   color: var(--hijauSangatTua);
+  margin-bottom: 20px;
 }
-
+.intro .gambar img{
+  border-radius: 20px;
+  box-shadow: 0 0 10px black;
+  margin: 10px;
+  animation: floating 3s ease-in-out infinite;
+}
+/* Kasih delay berbeda tiap gambar biar gerakannya tidak seragam/kaku */
+.intro .gambar img:nth-child(1) {
+    animation-delay: 0s;
+}
+.intro .gambar img:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.intro .gambar img:nth-child(3) {
+    animation-delay: 1s;
+}
+.intro .gambar img:nth-child(4) {
+    animation-delay: 1.5s;
+}
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
 /* deteksi */
 .deteksi{
+  display: flex;
+  flex-direction: column;
   margin-top: 40px;
   background-color: var(--hijauTuaSekali);
   color: white;
   padding: 25px; 
+}
+.deteksi .metode{
+  display: flex;
+  
 }
 .deteksi h2{
   border-bottom: 1px solid var(--lime);

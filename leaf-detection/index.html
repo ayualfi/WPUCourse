@@ -21,13 +21,72 @@
             <h1 class="mainJudul">AI <span>Leaf</span> Detection</h1>
             <p>An Artificial Intelligence for Chili Leaf Classification</p>
         </section>
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slideGrup">
+                    <section>
+                        <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="daun terkena hama">
+                        <p>Daun terkena Hama atau Jamur</p>
+                    </section>
+                    <section>
+                        <img src="assets/KURANG UNSUR HARA -- 27.jpg" alt="Daun kurang unsur hara">
+                        <p>Daun kurang unsur hara</p>
+                    </section>
+                    <section>
+                        <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="Daun kurang unsur hara">
+                        <p>Daun kurang unsur hara</p>
+                    </section>
+                    <section>
+                        <img src="assets/SEHAT -- 1.jpeg" alt="daun sehat">
+                        <p>Daun sehat</p>
+                    </section>
+                        <section>
+                        <img src="assets/SEHAT -- 13.jpeg" alt="daun sehat">
+                        <p>Daun sehat</p>
+                    </section>
+                </div>
+
+                <!-- Duplikat gambar agar tidak putus -->
+                <div class="slideGrup">
+                    <section>
+                        <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="daun terkena hama">
+                        <p>Daun terkena Hama atau Jamur</p>
+                    </section>
+                    <section>
+                        <img src="assets/KURANG UNSUR HARA -- 27.jpg" alt="Daun kurang unsur hara">
+                        <p>Daun kurang unsur hara</p>
+                    </section>
+                    <section>
+                        <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="Daun kurang unsur hara">
+                        <p>Daun kurang unsur hara</p>
+                    </section>
+                    <section>
+                        <img src="assets/SEHAT -- 1.jpeg" alt="daun sehat">
+                        <p>Daun sehat</p>
+                    </section>
+                        <section>
+                        <img src="assets/SEHAT -- 13.jpeg" alt="daun sehat">
+                        <p>Daun sehat</p>
+                    </section>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
         
         <!-- intro -->
         <div class="intro" id="about">
+            <section class="deskripsi">
             <h2>Deteksi Kesehatan <span>Daun Cabai</span></h2>
-            <p>Website ini menggunakan model Machine Learning yang dibuat menggunakan Google Teachable Machine untuk mengklasifikasikan kondisi daun cabai.</p>
+            <p>Menjaga kesehatan tanaman cabai adalah kunci utama untuk mendapatkan hasil panen yang optimal. Namun, seringkali gejala awal seperti serangan hama, infeksi jamur, atau kekurangan unsur hara sulit dikenali sejak dini oleh mata biasa</p>
+            <p>Melalui website ini, kami menghadirkan solusi berbasis kecerdasan buatan yang memanfaatkan model Machine Learning dari Google Teachable Machine untuk membantu mendeteksi kondisi daun cabai secara otomatis. Cukup dengan mengunggah foto daun, pengguna dapat langsung mengetahui apakah tanaman dalam kondisi sehat atau memerlukan penanganan lebih lanjut — sehingga tindakan pencegahan dapat dilakukan lebih cepat dan tepat sasaran..</p>
+            </section>
+            <section class="gambar">
+                <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="">
+                <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="">
+                <img src="assets/SEHAT -- 13.jpeg" alt="">
+                <img src="assets/SEHAT -- 1.jpeg" alt="">
+            </section>
         </div>
 
         <!-- deteksi -->
@@ -36,6 +95,7 @@
             <p>Pilih salah satu metode di bawah ini.</p>
 
             <!-- Upload Gambar -->
+            <div class="metode">
             <section class="uploadGambar" id="fromGallery">
                 <label for="uploadGambar"> Pilih Dari Galeri</label>
                 <input type="file" id="uploadGambar" accept="image/*">
@@ -56,6 +116,7 @@
                 <video src="" id="camera" autoplay playsinline hidden></video>
                 <canvas id="canvas" hidden></canvas>
              </section>
+             </div>
             <!-- Preview gambar -->
              <section class="previewGambar">
                 <img id="previewGambar" src="" alt="here is the leaf's preview">
