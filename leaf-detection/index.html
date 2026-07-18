@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deteksi Kesehatan Daun Cabai</title>
+    <title>AI Leaf Detection - Deteksi Kesehatan Daun Cabai</title>
+    <meta name="description" content="Deteksi kesehatan daun cabai secara otomatis menggunakan AI berbasis Google Teachable Machine dan TensorFlow.js.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
     <header>
         <nav>
-            <ul>
+            <button class="navToggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navMenu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <ul id="navMenu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#fromGallery">from Gallery</a></li>
                 <li><a href="#dragDrop">Drag and Drop</a></li>
@@ -25,67 +31,67 @@
             <div class="slide-track">
                 <div class="slideGrup">
                     <section>
-                        <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="daun terkena hama">
+                        <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="Daun cabai terkena hama" loading="lazy">
                         <p>Daun terkena Hama atau Jamur</p>
                     </section>
                     <section>
-                        <img src="assets/KURANG UNSUR HARA -- 27.jpg" alt="Daun kurang unsur hara">
+                        <img src="assets/KURANG UNSUR HARA -- 27.jpg" alt="Daun cabai kurang unsur hara" loading="lazy">
                         <p>Daun kurang unsur hara</p>
                     </section>
                     <section>
-                        <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="Daun kurang unsur hara">
+                        <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="Daun cabai kurang unsur hara" loading="lazy">
                         <p>Daun kurang unsur hara</p>
                     </section>
                     <section>
-                        <img src="assets/SEHAT -- 1.jpeg" alt="daun sehat">
+                        <img src="assets/SEHAT -- 1.jpeg" alt="Daun cabai sehat" loading="lazy">
                         <p>Daun sehat</p>
                     </section>
-                        <section>
-                        <img src="assets/SEHAT -- 13.jpeg" alt="daun sehat">
+                    <section>
+                        <img src="assets/SEHAT -- 13.jpeg" alt="Daun cabai sehat" loading="lazy">
                         <p>Daun sehat</p>
                     </section>
                 </div>
 
-                <!-- Duplikat gambar agar tidak putus -->
-                <div class="slideGrup">
+                <!-- Duplikat gambar agar animasi scroll tidak putus -->
+                <div class="slideGrup" aria-hidden="true">
                     <section>
-                        <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="daun terkena hama">
+                        <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="" loading="lazy">
                         <p>Daun terkena Hama atau Jamur</p>
                     </section>
                     <section>
-                        <img src="assets/KURANG UNSUR HARA -- 27.jpg" alt="Daun kurang unsur hara">
+                        <img src="assets/KURANG UNSUR HARA -- 27.jpg" alt="" loading="lazy">
                         <p>Daun kurang unsur hara</p>
                     </section>
                     <section>
-                        <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="Daun kurang unsur hara">
+                        <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="" loading="lazy">
                         <p>Daun kurang unsur hara</p>
                     </section>
                     <section>
-                        <img src="assets/SEHAT -- 1.jpeg" alt="daun sehat">
+                        <img src="assets/SEHAT -- 1.jpeg" alt="" loading="lazy">
                         <p>Daun sehat</p>
                     </section>
-                        <section>
-                        <img src="assets/SEHAT -- 13.jpeg" alt="daun sehat">
+                    <section>
+                        <img src="assets/SEHAT -- 13.jpeg" alt="" loading="lazy">
                         <p>Daun sehat</p>
                     </section>
                 </div>
             </div>
         </div>
     </header>
+
     <main>
-        
         <!-- intro -->
         <div class="intro" id="about">
             <section class="deskripsi">
-            <h2>Deteksi Kesehatan <span>Daun Cabai</span></h2>
-            <p>Menjaga kesehatan tanaman cabai adalah kunci utama untuk mendapatkan hasil panen yang optimal. Namun, seringkali gejala awal seperti serangan hama, infeksi jamur, atau kekurangan unsur hara sulit dikenali sejak dini oleh mata biasa</p>
-            <p>Melalui website ini, kami menghadirkan solusi berbasis kecerdasan buatan yang memanfaatkan model Machine Learning dari Google Teachable Machine untuk membantu mendeteksi kondisi daun cabai secara otomatis. Cukup dengan mengunggah foto daun, pengguna dapat langsung mengetahui apakah tanaman dalam kondisi sehat atau memerlukan penanganan lebih lanjut — sehingga tindakan pencegahan dapat dilakukan lebih cepat dan tepat sasaran..</p>
+                <h2>Deteksi Kesehatan <span>Daun Cabai</span></h2>
+                <p>Menjaga kesehatan tanaman cabai adalah kunci utama untuk mendapatkan hasil panen yang optimal. Namun, seringkali gejala awal seperti serangan hama, infeksi jamur, atau kekurangan unsur hara sulit dikenali sejak dini oleh mata biasa.</p>
+                <p>Melalui website ini, kami menghadirkan solusi berbasis kecerdasan buatan yang memanfaatkan model Machine Learning dari Google Teachable Machine untuk membantu mendeteksi kondisi daun cabai secara otomatis. Cukup dengan mengunggah foto daun, pengguna dapat langsung mengetahui apakah tanaman dalam kondisi sehat atau memerlukan penanganan lebih lanjut — sehingga tindakan pencegahan dapat dilakukan lebih cepat dan tepat sasaran.</p>
             </section>
             <section class="gambar">
-                <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="">
-                <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="">
-                <img src="assets/SEHAT -- 13.jpeg" alt="">
-                <img src="assets/SEHAT -- 1.jpeg" alt="">
+                <img src="assets/HAMA ATAU JAMUR -- 2.jpeg" alt="Contoh daun terkena hama atau jamur" loading="lazy">
+                <img src="assets/KURANG UNSUR HARA -- 9.jpg" alt="Contoh daun kurang unsur hara" loading="lazy">
+                <img src="assets/SEHAT -- 13.jpeg" alt="Contoh daun sehat" loading="lazy">
+                <img src="assets/SEHAT -- 1.jpeg" alt="Contoh daun sehat" loading="lazy">
             </section>
         </div>
 
@@ -94,66 +100,75 @@
             <h2>Mulai Deteksi <span>Daun</span></h2>
             <p>Pilih salah satu metode di bawah ini.</p>
 
-            <!-- Upload Gambar -->
             <div class="metode">
-            <section class="uploadGambar" id="fromGallery">
-                <label for="uploadGambar"> Pilih Dari Galeri</label>
-                <input type="file" id="uploadGambar" accept="image/*">
+                <!-- Upload Gambar -->
+                <section class="metodeUpload uploadGambar" id="fromGallery">
+                    <label for="uploadGambar">
+                        <span class="material-symbols-outlined" aria-hidden="true">add_photo_alternate</span>
+                        Pilih Dari Galeri
+                    </label>
+                    <input type="file" id="uploadGambar" accept="image/*">
+                </section>
+
+                <!-- Drag and Drop -->
+                <section class="metodeUpload dragDrop" id="dragDrop">
+                    <span class="material-symbols-outlined" aria-hidden="true">cloud_upload</span>
+                    <p>Drag &amp; Drop gambar di sini</p>
+                </section>
+
+                <!-- Gunakan kamera -->
+                <section class="metodeUpload onCamera" id="Camera">
+                    <span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>
+                    <button type="button" id="startCamera" class="startCamera">Buka Kamera</button>
+                    <button type="button" id="btnCapture" hidden>Ambil Foto</button>
+                </section>
+            </div>
+
+            <!-- Webcam -->
+            <section id="webcam" class="webcam">
+                <video id="camera" autoplay playsinline muted hidden></video>
+                <canvas id="canvas" hidden></canvas>
             </section>
 
-            <!-- Drag and Drop -->
-             <section class="dragDrop" id="dragDrop">
-                <p>Drag & Drop gambar di sini</p>
-             </section>
-
-            <!-- Gunakan kamera -->
-             <section class="onCamera" id="Camera">
-                <button id="startCamera" class="startCamera">Buka Kamera</button>
-                <button id="btnCapture" hidden>Ambil foto</button>
-             </section>
-            <!-- Webcam -->
-             <section id='webcam' class="webcam">
-                <video src="" id="camera" autoplay playsinline hidden></video>
-                <canvas id="canvas" hidden></canvas>
-             </section>
-             </div>
             <!-- Preview gambar -->
-             <section class="previewGambar">
-                <img id="previewGambar" src="" alt="here is the leaf's preview">
-             </section>
+            <section class="previewGambar">
+                <img id="previewGambar" src="" alt="Pratinjau daun yang akan dideteksi">
+            </section>
+
+            <!-- Tombol reset -->
+            <button type="button" id="btnReset" class="btnReset" hidden>Hapus &amp; Ulangi</button>
 
             <!-- Loading -->
-             <section class="loading" id="loading">
+            <section class="loading" id="loading" hidden>
                 <div class="spinner"></div>
-                    <p>Sedang melakukan prediksi</p>
-             </section>
+                <p id="loadingText">Sedang memuat model...</p>
+            </section>
         </div>
 
         <!-- Hasil prediksi -->
-        <div class="hasilPrediksi" id="result">
+        <div class="hasilPrediksi" id="result" hidden>
             <h3 class="prediksi" id="prediksi"></h3>
             <h4 class="persenPrediksi" id="persenPrediksi"></h4>
             <div class="detailPrediksi" id="detailPrediksi"></div>
         </div>
 
         <!-- Informasi hasil prediksi -->
-         <div class="informasi" id="informasi">
+        <div class="informasi" id="informasi">
             <h2>Informasi Prediksi</h2>
-            <p>Silahkan lakukan deteksi terlebih dahulu</p>
-         </div>
+            <p>Silahkan lakukan deteksi terlebih dahulu.</p>
+        </div>
     </main>
-<hr>
+
+    <hr>
+
     <footer>
-        <p>© 2026 <span>Ayu Alfi Hidayati</span></p>
-        <p>Powered by <span>TensorFlow.js</span> & <span>Google Teachable Machine</span></p>
+        <p>&copy; <span id="tahun">2026</span> <span>Ayu Alfi Hidayati</span></p>
+        <p>Powered by <span>TensorFlow.js</span> &amp; <span>Google Teachable Machine</span></p>
     </footer>
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-
     <script src="script.js"></script>
-
 </body>
 </html>
