@@ -381,7 +381,8 @@ header > section > p{
 
 .startCamera,
 #btnCapture,
-.btnReset{
+.btnReset,
+.btnSwitchCamera{
   border: none;
   border-radius: 30px;
   padding: 10px 22px;
@@ -396,7 +397,8 @@ header > section > p{
 
 .startCamera:hover,
 #btnCapture:hover,
-.btnReset:hover{
+.btnReset:hover,
+.btnSwitchCamera:hover{
   background: var(--hijauSangatMuda);
   transform: scale(1.05);
 }
@@ -407,6 +409,21 @@ header > section > p{
   background: transparent;
   border: 2px solid var(--lime);
   color: var(--lime);
+}
+
+.btnSwitchCamera{
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnSwitchCamera .material-symbols-outlined{
+  font-size: 22px;
+  color: var(--hijauTuaSekali);
 }
 
 .btnReset:hover{

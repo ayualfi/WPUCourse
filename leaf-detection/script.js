@@ -30,9 +30,14 @@ const dropArea = document.getElementById("dragDrop");
 // Kamera
 const startCameraBtn = document.getElementById("startCamera");
 const btnCapture = document.getElementById("btnCapture");
+const btnSwitchCamera = document.getElementById("btnSwitchCamera");
 const camera = document.getElementById("camera");
 const canvas = document.getElementById("canvas");
 let stream = null;
+
+// Kamera belakang ("environment") dipakai sebagai default karena lebih
+// relevan untuk memotret objek (daun cabai) dibanding kamera depan ("user").
+let currentFacingMode = "environment";
 
 // Preview & reset
 const previewGambar = document.getElementById("previewGambar");
@@ -281,11 +286,15 @@ function displayDiseaseInformation(bestIndex) {
 // KAMERA
 // ================================================
 function setupKamera() {
-  startCameraBtn.addEventListener("click", openCamera);
+  startCameraBtn.addEventListener("click", () => openCamera(currentFacingMode));
   btnCapture.addEventListener("click", captureImage);
+
+  if (btnSwitchCamera) {
+    btnSwitchCamera.addEventListener("click", switchCamera);
+  }
 }
 
-async function openCamera() {
+async function openCamera(facingMode) {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     alert("Kamera tidak didukung pada perangkat atau browser ini.");
     return;
@@ -297,10 +306,11 @@ async function openCamera() {
 
     resetTampilanHasil();
 
-    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    stream = await getCameraStream(facingMode);
     camera.srcObject = stream;
     camera.hidden = false;
     btnCapture.hidden = false;
+    if (btnSwitchCamera) btnSwitchCamera.hidden = false;
 
     informasi.innerHTML = `
         <h2>Informasi Prediksi</h2>
@@ -310,6 +320,26 @@ async function openCamera() {
     console.error(error);
     alert("Tidak dapat mengakses kamera: " + error.message);
   }
+}
+
+// Meminta akses kamera dengan preferensi arah (facingMode). Jika perangkat
+// tidak punya kamera dengan arah tersebut (mis. laptop tanpa kamera belakang),
+// coba lagi tanpa batasan facingMode supaya kamera yang tersedia tetap dipakai.
+async function getCameraStream(facingMode) {
+  try {
+    return await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: facingMode } }
+    });
+  } catch (error) {
+    console.warn("Kamera dengan facingMode diminta gagal, mencoba kamera lain.", error);
+    return await navigator.mediaDevices.getUserMedia({ video: true });
+  }
+}
+
+// Bertukar antara kamera belakang dan kamera depan.
+async function switchCamera() {
+  currentFacingMode = currentFacingMode === "environment" ? "user" : "environment";
+  await openCamera(currentFacingMode);
 }
 
 function captureImage() {
@@ -328,6 +358,7 @@ function captureImage() {
   stopCameraStream();
   camera.hidden = true;
   btnCapture.hidden = true;
+  if (btnSwitchCamera) btnSwitchCamera.hidden = true;
 }
 
 function stopCameraStream() {
