@@ -56,22 +56,30 @@ h3{
 }
 /* main */
 main .hero{
+  width: 100%;
+  min-height: 100vh;
   padding: 20px;
   display: flex;
+  gap: 20px;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  background-image: linear-gradient(to bottom, #6D8196, #1B263B );
+  background-image: linear-gradient(to bottom, #1E2D3D, #0B131A);
   box-shadow: 0 0 10px rgb(0, 0, 0);
   /* border-radius: 0 0 40px 40px; */
 }
 main .hero h2{
-  font-size: 40px;
+  font-size: 60px;
+  padding: 40px;
   color: #06b6d4;
+  text-align: top;
+  
 }
 main .hero h2 span{
   color: rgb(7, 210, 246);
   text-shadow: 0 0 9px rgba(255, 255, 0, 0.9);
+}
+main .hero h4{
+  letter-spacing: 3px;
 }
 main .hero a{
   text-decoration: none;
@@ -90,11 +98,12 @@ main .hero a:hover{
 }
 /* about */
 .about{
+  width: 100%;
+  min-height: 100vh;
   padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
 }
 .about h2{
@@ -107,8 +116,10 @@ main .hero a:hover{
 }
 .about p{
   margin-top: 20px;
-  letter-spacing: 1px;
-  line-height: 25px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  width: 70%;
+  font-size: 17px;
 }
 .about p .namaKegiatan{
   color: #06b6d4;
@@ -125,8 +136,10 @@ main .hero a:hover{
 /* Line up */
 .lineup{
   margin: 20px 0;
+  padding: 20px 0;
   position: relative;
-  
+  background-color: #141e36 ;
+  box-shadow: 0 0 20px rgba(255 255 255 / 0.10) ;
 }
 .lineup h3{
   border-left: 5px solid #06b6d4;
