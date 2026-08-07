@@ -69,12 +69,11 @@ main .hero{
 }
 main .hero h2{
   font-size: 60px;
-  padding: 40px;
   color: #06b6d4;
   text-align: top;
   
 }
-main .hero h2 span{
+main .hero .judul span{
   color: rgb(7, 210, 246);
   text-shadow: 0 0 9px rgba(255, 255, 0, 0.9);
 }
@@ -83,8 +82,8 @@ main .hero h4{
 }
 main .hero a{
   text-decoration: none;
-  color: yellow;
-  background-color: #06b6d4;
+  color: rgb(246, 246, 246);
+  background-color: #d40906;
   padding: 10px 15px;
   border-radius: 18px;
   font-size: 15px;
@@ -93,26 +92,22 @@ main .hero a{
   transition: all 0.3s ease;
 }
 main .hero a:hover{
-  color: #0597b1;
-  background-color: rgb(246, 246, 68) ;
+  transform: scale(1.1);
 }
 /* about */
 .about{
   width: 100%;
-  min-height: 100vh;
-  padding: 50px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-align: center;
 }
-.about h2{
-  font-size: 35px;
-  border-bottom: 1px solid #06b6d4;
+.about .tentang{
+  font-size: 40px;
   padding: 0 10px;
-}
-.about h2 span{
-  color:#06b6d4;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(to right,#0650fe , #06b6d4 90%);
 }
 .about p{
   margin-top: 20px;
@@ -125,12 +120,7 @@ main .hero a:hover{
   color: #06b6d4;
   font-weight: bold;
 }
-.about p .Tema{
-  color: #06b6d4;
-  font-weight: bolder;
-  text-shadow: 0 0 9px rgba(255, 255, 0, 0.9);
-}
-.about p .genreMusik{
+.hero p .genreMusik{
   color: #06b6d4;
 }
 /* Line up */
