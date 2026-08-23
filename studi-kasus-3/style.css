@@ -70,8 +70,6 @@ main .hero{
 main .hero h2{
   font-size: 60px;
   color: #06b6d4;
-  text-align: top;
-  
 }
 main .hero .judul span{
   color: rgb(7, 210, 246);
@@ -83,7 +81,7 @@ main .hero h4{
 main .hero a{
   text-decoration: none;
   color: rgb(246, 246, 246);
-  background-color: #d40906;
+  background-color: #06b6d4;
   padding: 10px 15px;
   border-radius: 18px;
   font-size: 15px;
@@ -149,6 +147,9 @@ main .hero a:hover{
   align-items: center;
   justify-content:space-around;
 }
+.lineup ul li{
+  display: flex;
+}
 .lineup ul figure{
   /* flex-basis: 300px;
   flex-grow: 1; */
@@ -170,8 +171,6 @@ main .hero a:hover{
 }
 
 .lineup ul figure img{
-  width: 100%;
-  height: 200px;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
