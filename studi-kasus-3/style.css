@@ -58,18 +58,19 @@ h3{
 main .hero{
   width: 100%;
   min-height: 100vh;
-  padding: 20px;
   display: flex;
   gap: 20px;
   align-items: center;
   flex-direction: column;
   background-image: linear-gradient(to bottom, #1E2D3D, #0B131A);
   box-shadow: 0 0 10px rgb(0, 0, 0);
+  
   /* border-radius: 0 0 40px 40px; */
 }
-main .hero h2{
+main .hero .judul{
   font-size: 60px;
   color: #06b6d4;
+  padding: 20px;
 }
 main .hero .judul span{
   color: rgb(7, 210, 246);
@@ -97,10 +98,10 @@ main .hero a:hover{
     "left right"
     "bottom bottom";
   gap: 40px;
-  padding: 30px 50px;
 }
 .about .tentang{
   grid-area: left;
+  padding-left: 20px;
 }
 .about .highlight{
   grid-area: right;
@@ -115,10 +116,11 @@ main .hero a:hover{
   flex-direction: column;
   gap: 0;
   line-height: 1;
+  padding: 20px;
 }
 .tentang h2 span:first-child{
   font-size: 50px;
-  color: #fff;
+  color: #fff
 }
 .tentang h2 span:nth-child(2){
   font-size: 40px;
@@ -139,93 +141,70 @@ main .hero a:hover{
 .tentang p{
   font-size: 20px;
   line-height: 1.5;
-  margin: 20px 0;
+  padding: 20px;
 }
 
 /* highlight */
-.about .highlight{
-  font-size: 30px;
+.about .highlight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
 }
-.about .highlight p{
-  background-color: #cbd5e1;
-  padding: 5px 20px;
-  border-radius: 30px;
-  margin: 20px;
-  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.35));
-}
-.about .highlight p:first-child{
-  color:#0195af;
-  background-color: #cbd5e1;
-  padding: 5px 20px;
+
+.about .highlight p {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: fit-content;
+  margin: 0;
+  padding: 8px 18px;
+
+  border: 1px solid rgba(6, 182, 212, 0.35);
   border-radius: 40px;
-  display: inline-block;
-}
-.about .highlight p:first-child span{
-  font-weight:  bolder;
-  font-size: 35px;
-  background-image: linear-gradient(
-    to right,
-    #06b6d4,
-    #0650fe
-  );
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.35));
-}
-.about .highlight p:nth-child(2){
-  color:#0195af;
-  display: inline-block;
-}
-.about .highlight p:nth-child(2) span{
-  font-weight:  bolder;
-  font-size: 35px;
-  background-image: linear-gradient(
-    to right,
-    #06b6d4,
-    #0650fe
-  );
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.35));
-}
-.about .highlight p:last-child{
-  color:#0195af;
-  display: inline-block;
-}
-.about .highlight p:last-child span{
-  font-weight:  bolder;
-  font-size: 35px;
-  background-image: linear-gradient(
-    to right,
-    #06b6d4,
-    #0650fe
-  );
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.35));
+
+  background-color: rgba(203, 213, 225, 0.08);
+
+  color: #cbd5e1;
+  font-size: 18px;
+  letter-spacing: 1px;
+
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.15));
+
+  transition: all 0.3s ease;
 }
 
 /*marquue  */
 .about .marquue{
-  background-color:  rgb(251, 251, 168);
-  color: #000a23;
+  background-color: rgba(6, 182, 212, 0.4);
+  border-top: 1px solid rgba(6, 182, 212, 0.4);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.4);
   overflow: hidden;
   width: 100%;
+  padding: 12px 0;
 }
 @keyframes berjalan{
   from{
-    transform: translateX(100%);
+    transform: translateX(100vw);
   }
   to{
-    transform: translateY(-100%);
+    transform: translateX(-100%);
   }
 }
 .about .marquue p{
+  white-space: nowrap;
+  width: max-content;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #06b6d4;
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
   animation-name: berjalan;
-  animation-duration: 15s;
+  animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -238,11 +217,13 @@ main .hero a:hover{
   box-shadow: 0 0 20px rgba(255 255 255 / 0.10) ;
 }
 .lineup h3{
-  border-left: 5px solid #06b6d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 20px;
   padding: 0 10px;
-  font-size: 30px;
-  background-image: linear-gradient(to left, #0650fe 80% , #06b6d4 );
+  font-size: 40px;
+  background-image: linear-gradient(to left, #0650fe , #06b6d4 80% );
   background-clip: text;
   color: transparent;
 }
@@ -304,4 +285,79 @@ main .hero a:hover{
   position: absolute;
   top: 0px;
   right: 0px;
+  margin-top: 30px;
+}
+/* schedule */
+.schedule{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.schedule h3{
+  margin: 20px;
+  padding: 0 10px;
+  font-size: 40px;
+  background-image: linear-gradient(to left, #0650fe 50% , #06b6d4 );
+  background-clip: text;
+  color: transparent;
+}
+.schedule table {
+  width: 80%;
+  border: 2px solid rgba(6, 182, 212, 0.4);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  text-align: center;
+  background-color: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+}
+
+/* header  */
+.schedule table th{
+  height: 50px;
+  background-color: #06b6d4;
+  color: #012f37;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* isi tabel */
+.schedule table td{
+  height: 45px;
+  padding: 8px 15px;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.4);
+}
+
+/* lebar kolom */
+.schedule table th:first-child{
+  width: 20%;
+}
+.schedule table th:nth-child(2){
+  width: 50%;
+}
+.schedule table th:last-child{
+  width: 30%;
+}
+
+/* hover */
+.schedule table tbody tr:hover {
+  background-color: rgba(6, 182, 212, 0.18);
+  transition: 0.3s;
+}
+
+/* zebra striping */
+.schedule table tbody tr:nth-child(even){
+  background-color: rgba(6, 182, 212, 0.08);
+}
+
+/* day 1 dan day 2 */
+.schedule table tbody tr:first-child,
+.schedule table tbody tr:nth-child(8) {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
