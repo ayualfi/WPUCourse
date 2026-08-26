@@ -188,7 +188,7 @@
         </table>
       </section>
       <!-- 2.5 TIKET SECTION -->
-      <section  id="tiket">
+      <section  id="tiket" class="tiket">
         <h3>Get Your Tickets</h3>
         <table>
           <tr>
@@ -200,19 +200,18 @@
             <td><input type="email" id="email" required></td>
           </tr>
           <tr>
-            <td>Ticket Type</td>
+            <td><label for="tipeTiket">Pilih tipe tiket</label></td>
             <td>
-              <input type="radio" name="tipetiket" id="reguler" checked>
-              <label for="reguler"> Regular Rp 500,000</label><br>
-              <input type="radio" name="tipetiket" id="vip">
-              <label for="vip"> VIP Rp 1,500,000</label><br>
-              <input type="radio" name="tipetiket" id="vvip">
-              <label for="vvip">VVIP Rp 3,000,000</label>
+              <select name="tipeTiket" id="tipeTiket">
+                <option value="reguler">Regular Rp 500.000</option>
+                <option value="VIP">VIP Rp 1,500,000</option>
+                <option value="VVIP">VVIP Rp 3,000,000</option>
+              </select>
             </td>
           </tr>
           <tr>
             <td><label for="kuantitas">Quantity</label></td>
-            <td><input type="number" id="kuantitas" min="1" max="10" value="1"></td>
+            <td><input type="number" id="kuantitas" min="1" max="10" value="1" oninput="if(this.value > 10) this.value = 10"></td>
           </tr>
           <tr>
             <td><button>Buy Now</button></td>

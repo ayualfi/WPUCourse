@@ -342,11 +342,6 @@ main .hero a:hover{
   width: 30%;
 }
 
-/* hover */
-.schedule table tbody tr:hover {
-  background-color: rgba(6, 182, 212, 0.18);
-  transition: 0.3s;
-}
 
 /* zebra striping */
 .schedule table tbody tr:nth-child(even){
@@ -360,4 +355,26 @@ main .hero a:hover{
   color: #06b6d4;
   font-weight: 700;
   letter-spacing: 2px;
+}
+
+/* hover */
+.schedule table tbody tr:hover {
+  background-color: rgba(6, 182, 212, 0.18);
+  transition: 0.3s;
+}
+
+/* 2.5 TIKET SECTION */
+.tiket{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tiket h3{
+  margin: 20px;
+  padding: 0 10px;
+  font-size: 40px;
+  background-image: linear-gradient(to left, #0650fe 50% , #06b6d4 );
+  background-clip: text;
+  color: transparent;
 }
