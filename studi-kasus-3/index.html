@@ -23,11 +23,11 @@
 
   <!-- 2. KONTEN UTAMA -->
   <main>
+    <a href="#tiket" class="getTicket">Get Tickets</a>
     <!-- 2.1. HERO SECTION -->
     <section id="home" class="hero">
       <h2 class="judul"><span>Neon Nights</span> Music Festival</h2>
       <p>June 15-17. 2026 | Jakarta International Expo</p>
-      <a href="#tiket" class="getTicket">Get Tickets</a>
 
       <section class="about">
         <div class="tentang">
@@ -190,34 +190,27 @@
       <!-- 2.5 TIKET SECTION -->
       <section  id="tiket" class="tiket">
         <h3>Get Your Tickets</h3>
-        <table>
-          <tr>
-            <td><label for="nama">Full Name</label></td>
-            <td><input type="text" id="nama" required autofocus></td>
-          </tr>
-          <tr>
-            <td><label for="email">Email</label></td>
-            <td><input type="email" id="email" required></td>
-          </tr>
-          <tr>
-            <td><label for="tipeTiket">Pilih tipe tiket</label></td>
-            <td>
-              <select name="tipeTiket" id="tipeTiket">
-                <option value="reguler">Regular Rp 500.000</option>
-                <option value="VIP">VIP Rp 1,500,000</option>
-                <option value="VVIP">VVIP Rp 3,000,000</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td><label for="kuantitas">Quantity</label></td>
-            <td><input type="number" id="kuantitas" min="1" max="10" value="1" oninput="if(this.value > 10) this.value = 10"></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button>Buy Now</button></td>
-          </tr>
-        </table>
+
+        <form action="">
+              <label for="nama">Full Name</label>
+              <input type="text" id="nama" required autofocus>
+        
+              <label for="email">Email</label>
+              <input type="email" id="email" required>
+        
+              <label for="tipeTiket">Pilih tipe tiket</label>
+                <select name="tipeTiket" id="tipeTiket">
+                  <option value="reguler">Regular Rp 500.000</option>
+                  <option value="VIP">VIP Rp 1,500,000</option>
+                  <option value="VVIP">VVIP Rp 3,000,000</option>
+                </select>
+              
+              <label for="kuantitas">Quantity</label>
+              <input type="number" id="kuantitas" min="1" max="10" value="1" oninput="if(this.value > 10) this.value = 10">
+        
+              <button type="submit">Buy Now</button>
+        </form>
+
       </section>
       <!-- 2.5 GALERI SECTION -->
     <section id="galeri">
@@ -225,26 +218,26 @@
         <ul>
           <li>
             <figure>
-              <img src="assets/fest1.jpeg" alt="festival Bianglala" width="300px">
-              <figcaption>Festival Musician 2025</figcaption>
+              <img src="assets/FEST 1.jpg" alt="festival Pestapora" width="300px">
+              <figcaption>Festival Pestapora 2025</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <img src="assets/fest2.jpg" alt="festival malam kuning" width="300px">
-              <figcaption>Festival Musician 2025</figcaption>
+              <img src="assets/FEST 2.jpg" alt="festival Batfest" width="300px">
+              <figcaption>Festival BATFEST 2026</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <img src="assets/fest3.jpg" alt="festival malam biru" width="300px">
-              <figcaption>Festival Musician 2025</figcaption>
+              <img src="assets/FEST 3.jpg" alt="festival Ufuk Timur Indonesia" width="300px">
+              <figcaption>Festival UTI Fest 2025</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <img src="assets/fest4.jpg" alt="festival malam cerah" width="300px">
-              <figcaption>Festival Musician 2025</figcaption>
+              <img src="assets/FEST 4.jpg" alt="festival Tradisi Indonesia" width="300px">
+              <figcaption>Festival Tradisi Indonesia 2025</figcaption>
             </figure>
           </li>
         </ul>
