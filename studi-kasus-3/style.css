@@ -27,7 +27,7 @@ h3{
   z-index: 1000;
 }
 .header h1{
-  font-size: 30px;
+  font-size: clamp(10px, 8vw, 30px);
   letter-spacing: 3px;
   background-image: linear-gradient(to right,#0650fe , #06b6d4 90%);
   color: transparent;
@@ -39,7 +39,8 @@ h3{
   display: flex;
   flex-direction: row;
   gap: 3px;
-  
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .header nav ul li a{
   text-decoration: none;
@@ -63,7 +64,7 @@ main .getTicket{
   border-radius: 18px;
   font-size: 15px;
   font-weight: bolder;
-  box-shadow: 0 0 5px #cbd5e1cc;
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.7);
   transition: all 0.3s ease;
   position: fixed;
   right: 25px;
@@ -90,7 +91,7 @@ main .hero{
   /* border-radius: 0 0 40px 40px; */
 }
 main .hero .judul{
-  font-size: 60px;
+  font-size: clamp(40px, 5vw, 60px);
   color: #06b6d4;
   padding: 20px;
 }
@@ -221,7 +222,6 @@ main .hero .judul span{
 .lineup{
   margin: 20px 0;
   padding: 20px 0;
-  position: relative;
   background-color: #141e36 ;
   box-shadow: 0 0 20px rgba(255 255 255 / 0.10) ;
 }
@@ -258,6 +258,7 @@ main .hero .judul span{
   /* flex-basis: 300px;
   flex-grow: 1; */
   flex: 1  1 300px;
+  position: relative;
   border: 2px solid transparent;
   border-radius: 20px;
   display: flex;
@@ -292,9 +293,9 @@ main .hero .judul span{
 .badgeDay{
   background-color: red;
   box-shadow: 0 0 8px rgba(255 255 255 / 0.7);
-  padding: 7px 30px;
+  padding: 7px 15px;
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 15px;
   display: inline-block;
   border-radius: 8px 0 0 8px;
   position: absolute;
@@ -456,4 +457,134 @@ main .hero .judul span{
   transform: scale(1.1);
   background-color:rgba(1, 149, 175, 0.5);
   border-color: #0195af;
+}
+/* <!-- 2.5 GALERI SECTION --> */
+.tempatGaleri{
+  margin: 20px 0px;
+}
+.tempatGaleri h2{
+  text-align: center;
+  margin: 50px auto 0px;
+  font-size: 40px;
+  background-image: linear-gradient(
+    to right,
+    #06b6d4 40%,
+    #0650fe
+  );
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.35));
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  box-sizing: content-box;
+}
+.galery{
+  margin: 30px 0px;
+  background-image: linear-gradient(to bottom, #1E2D3D, #0B131A);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+}
+
+.galery figure{
+  border:1px solid rgba(6, 182, 212, 0.6);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+  border-radius: 10px;
+  animation: floating 3s ease-in-out infinite;
+}
+.galery .fest1{
+  animation-delay: 0.3s;
+}
+.galery .fest2{
+  animation-delay: 0.5s;
+}
+.galery .fest3{
+  animation-delay: 0.7s;
+}
+.galery .fest4{
+  animation-delay: 0.9s;
+}
+
+@keyframes floating{
+  0%,
+  100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+}
+
+.galery figure img{
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  height: 200px;
+  object-fit: cover;
+}
+
+.galery figure figcaption{
+  margin: 10px ;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.8);
+  color: #edf2f7;
+  text-align: center;
+}
+.galery figure:hover{
+  animation-play-state: paused;
+}
+
+/* footer */
+.footer{
+  background-color: rgba(6, 182, 212, 0.2);
+  border: 1px solid rgba(6, 182, 212, 0.21);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.18);
+  padding: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.footer ul{
+  display: flex;
+  gap: 10px;
+  list-style-type: none;
+  
+}
+.footer ul li a{
+  text-decoration: none;
+  color: #06b6d4;
+  letter-spacing: 2px;
+}
+.footer p:first-of-type{
+  color: rgb(170, 242, 255);
+}
+.footer p:last-child{
+  margin-top: 20px;
+  padding: 5px 20px;
+  border-top: 1px solid #406e77;
+  color: rgba(6, 182, 212, 0.2);
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+/* KONDISI DI UKURAN LAYAR TERTENTU */
+@media (max-width: 768px){
+  .header{
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header nav ul{
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .main .hero .judul{
+    text-align: center;
+  }
 }
