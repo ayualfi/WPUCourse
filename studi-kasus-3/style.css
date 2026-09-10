@@ -94,6 +94,7 @@ main .hero .judul{
   font-size: clamp(40px, 5vw, 60px);
   color: #06b6d4;
   padding: 20px;
+  text-align: center;
 }
 main .hero .judul span{
   color: rgb(7, 210, 246);
@@ -129,15 +130,17 @@ main .hero .judul span{
   padding: 20px;
 }
 .tentang h2 span:first-child{
-  font-size: 50px;
-  color: #fff
+  font-size: clamp(35px, 5vw, 50px);
+  color: #fff;
 }
+
 .tentang h2 span:nth-child(2){
-  font-size: 40px;
+  font-size: clamp(30px, 4vw, 40px);
   color: #06b6d4;
 }
+
 .tentang h2 span:last-child{
-  font-size: 70px ;
+  font-size: clamp(45px, 7vw, 70px);
   background-image: linear-gradient(
     to right,
     #06b6d4,
@@ -149,7 +152,7 @@ main .hero .judul span{
   filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.35));
 }
 .tentang p{
-  font-size: 20px;
+  font-size: clamp(2px, 6vw, 20px);
   line-height: 1.5;
   padding: 20px;
 }
@@ -161,6 +164,7 @@ main .hero .judul span{
   justify-content: center;
   align-items: flex-start;
   gap: 15px;
+  margin-right: 10px;
 }
 
 .about .highlight p {
@@ -231,7 +235,7 @@ main .hero .judul span{
   justify-content: center;
   margin: 20px;
   padding: 0 10px;
-  font-size: 40px;
+  font-size: clamp(30px, 5vw, 40px);
   background-image: linear-gradient(
     to right,
     #06b6d4 40%,
@@ -313,7 +317,7 @@ main .hero .judul span{
 .schedule h3{
   margin: 20px;
   padding: 0 10px;
-  font-size: 40px;
+  font-size: clamp(30px, 5vw, 40px);
   background-image: linear-gradient(
     to right,
     #06b6d4 40%,
@@ -395,7 +399,7 @@ main .hero .judul span{
 }
 .tiket h3{
   margin: 50px auto 0px;
-  font-size: 40px;
+  font-size: clamp(30px, 5vw, 40px);
   background-image: linear-gradient(
     to right,
     #06b6d4 40%,
@@ -414,8 +418,8 @@ main .hero .judul span{
   letter-spacing: 2px;
   background-color: rgba(6, 182, 212, 0.2);
   margin: 20px auto;
-  padding: 40px 40px;
-  width: 30%;
+  padding: 40px;
+  width: min(90%, 500px);
   box-sizing: border-box;
   border-radius: 20px;
   border: 1px solid rgba(6, 182, 212, 0.21);
@@ -458,6 +462,7 @@ main .hero .judul span{
   background-color:rgba(1, 149, 175, 0.5);
   border-color: #0195af;
 }
+
 /* <!-- 2.5 GALERI SECTION --> */
 .tempatGaleri{
   margin: 20px 0px;
@@ -465,7 +470,7 @@ main .hero .judul span{
 .tempatGaleri h2{
   text-align: center;
   margin: 50px auto 0px;
-  font-size: 40px;
+  font-size: clamp(30px, 5vw, 40px);
   background-image: linear-gradient(
     to right,
     #06b6d4 40%,
@@ -587,4 +592,14 @@ main .hero .judul span{
   .main .hero .judul{
     text-align: center;
   }
+
+  .tiket form{
+    padding: 25px
+  }
+
+  .tiket form button{
+    width:50%;
+    align-self: center;
+  }
+
 }
