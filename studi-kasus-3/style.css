@@ -602,4 +602,12 @@ main .hero .judul span{
     align-self: center;
   }
 
+  .about{
+    grid-template-columns: 1fr;
+  }
+
+  .about .highlight{
+    align-items: center;
+    margin-right: 0;
+  }
 }
