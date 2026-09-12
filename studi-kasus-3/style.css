@@ -552,6 +552,7 @@ main .hero .judul span{
   justify-content: center;
   align-items: center;
   gap: 5px;
+  text-align: center;
 }
 .footer ul{
   display: flex;
