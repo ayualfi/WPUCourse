@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <!-- PENTING: Mengatur skala agar sesuai dengan lebar perangkat sesungguhnya -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Responsive (Fluid)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f3f4f6;
+    }
+    
+    /* Container fluid: menggunakan % dan max-width */
+    .container {
+      width: 90%;
+      max-width: 960px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      box-sizing: border-box; /* Mencegah padding merusak ukuran layout */
+    }
+    
+    .box-container {
+      display: flex;
+      flex-direction: column; /* Mobile-First: Secara bawaan bertumpuk vertikal */
+      gap: 20px;
+    }
+    
+    .box {
+      background-color: #10b981;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Penjelasan awal tentang Media Query (akan didalami di video selanjutnya) */
+    @media (min-width: 600px) {
+      .box-container {
+        flex-direction: row; /* Layar sedang/lebar: Kolom berjejer horizontal */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Layout Responsive (Fluid & Mobile-First)</h2>
+    <p>Halaman ini menggunakan meta viewport, sehingga browser HP akan merender sesuai lebar asli layar HP (device-width). Layout kontainer juga menggunakan persentase (90%) dengan batas maksimal (max-width: 960px). Pada layar kecil, kolom bertumpuk vertikal demi kenyamanan baca, dan otomatis berjejer horizontal ketika layar lebih lebar dari 600px.</p>
+    
+    <div class="box-container">
+      <div class="box">Kolom 1</div>
+      <div class="box">Kolom 2</div>
+      <div class="box">Kolom 3</div>
+    </div>
+  </div>
+
+</body>
+</html>

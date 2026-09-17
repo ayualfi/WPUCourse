@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Fixed (Desktop-First/Statis)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f3f4f6;
+    }
+
+    /* Box kontainer kaku berukuran 960px */
+    .container {
+      width: 960px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+
+    .box-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .box {
+      flex: 1;
+      background-color: #3b82f6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Layout Fixed/Kaku (Statis)</h2>
+    <p>Coba buka halaman ini di simulator mobile Chrome DevTools. Tanpa tag meta viewport dan dengan lebar statis 960px,
+      tampilan halaman ini akan mengecil seperti semut karena browser mobile terpaksa merender pada resolusi desktop
+      bawaan (~980px) lalu menciutkannya agar muat di layar HP Anda.</p>
+
+    <div class="box-container">
+      <div class="box">Kolom 1</div>
+      <div class="box">Kolom 2</div>
+      <div class="box">Kolom 3</div>
+    </div>
+  </div>
+
+</body>
+
+</html>
