@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 4c: Tantangan RWD - Sebelum Perbaikan</title>
+  <style>
+    /* ==========================================
+       CSS RESET & TAMPILAN UMUM (JANGAN DIUBAH)
+       ========================================== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 380px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .card-content {
+      padding: 60px 20px 30px 20px;
+      /* Padding atas besar untuk memberi ruang avatar */
+      text-align: center;
+    }
+
+    .card-content h2 {
+      font-size: 1.5rem;
+      color: #3b82f6;
+      margin-bottom: 5px;
+    }
+
+    .card-content p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .social-stats {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+    }
+
+    .stat-item span {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #f1f5f9;
+    }
+
+    .stat-item label {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================
+       BAGIAN TANTANGAN (CSS UNTUK GAMBAR)
+       Silakan isi instruksi di bawah ini!
+       ========================================== */
+
+    /* 1. WADAH GAMBAR BANNER KARTU */
+    .card-banner {
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      background-color: #0f172a;
+    }
+
+    /* CHALLENGE 1: Atur gambar banner agar responsif & tidak gepeng */
+    .card-banner img {
+      /* TODO A: Buat lebar gambar banner mengisi 100% lebar wadahnya */
+      width: 100%;
+      /* TODO B: Kunci tingginya agar tetap 100% mengikuti tinggi induknya (.card-banner) */
+      height: 100%;
+      /* TODO C: Terapkan properti agar gambar tidak gepeng dan terpotong secara proporsional */
+      object-fit: cover;
+      /* TODO D: Geser posisi gambar agar area tengah (center) gambar selalu diprioritaskan */
+      object-position: center;
+      display: block;
+    }
+
+    /* 2. WADAH AVATAR BULAT */
+    .card-avatar {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #1e293b;
+    }
+
+    /* CHALLENGE 2: Terapkan Aturan Emas (Golden Rule) & Object-Fit pada Avatar */
+    .card-avatar img {
+      /* TODO E: Atur agar gambar avatar memiliki lebar 100% agar tidak luber keluar lingkaran */
+      width: 100%;
+      /* TODO F: Kunci tinggi gambar menjadi 100% agar memenuhi lingkaran wadahnya */
+      height: 100%;
+      /* TODO G: Terapkan properti agar wajah subjek tidak terdistorsi (gepeng) */
+      object-fit: cover;
+      /* TODO H: Atur posisi gambar ke atas (top) agar wajahnya terfokus dengan baik */
+      object-position: top;
+      border-radius: 50%;
+      border: 4px solid #1e293b;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <!-- Gambar Banner Kartu (Resolusi Lebar Asli: 1200x800) -->
+    <div class="card-banner">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&width=800&auto=format&fit=crop"
+        alt="Abstract Tech Banner">
+    </div>
+
+    <!-- Gambar Avatar Bulat (Resolusi Tinggi Asli: 800x800, wajah ada di bagian atas) -->
+    <div class="card-avatar">
+      <img src="img/elon.jpg" alt="Avatar Pengguna">
+    </div>
+
+    <div class="card-content">
+      <h2>Sandhika Galih</h2>
+      <p>Web Developer & Educator @ WPU</p>
+
+      <div class="social-stats">
+        <div class="stat-item">
+          <span>842K</span>
+          <label>Subscribers</label>
+        </div>
+        <div class="stat-item">
+          <span>125</span>
+          <label>Videos</label>
+        </div>
+        <div class="stat-item">
+          <span>4.9</span>
+          <label>Rating</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

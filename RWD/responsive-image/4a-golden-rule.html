@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 4a: Aturan Emas Gambar Responsif (Golden Rule)</title>
+  <style>
+    /* ==========================================
+       1. CSS RESET & GENERAL STYLES
+       ========================================== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    header h1 {
+      color: #1e3a8a;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================
+       2. DEMO CARD COMPONENT
+       ========================================== */
+    .demo-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 25px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .demo-card h2 {
+      font-size: 1.4rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .demo-card p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .badge-error {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-warning {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-success {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+
+    /* 
+       Box pembatas untuk mensimulasikan ukuran container yang kecil / dinamis.
+       Garis putus-putus merah/biru menunjukkan batas aman dari container.
+    */
+    .box-container {
+      border: 2px dashed #cbd5e1;
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-radius: 8px;
+      overflow: visible;
+      /* Biarkan overflow terlihat untuk demo 1 */
+    }
+
+    .box-container-small {
+      max-width: 300px;
+      margin: 0 auto;
+      border-color: #ef4444;
+      /* Merah untuk menunjukkan area sempit */
+    }
+
+    .box-container-large {
+      max-width: 800px; /* ukuran ini lebih besar dari ukuran asli gambarnya. sehingga gambar di upscale lalu menjadi blur, pecah. Jadi kita ribet harus mikirin ukuran kontainer yang harus lebih besar dari ukuran gambar */
+      margin: 0 auto;
+      border-color: #e2e8f0;
+    }
+
+    .box-container-responsive {
+      max-width: 500px;
+      margin: 0 auto;
+      border-color: #10b981;
+      /* Hijau untuk responsif */
+    }
+
+    /* ==========================================
+       3. CSS ATURAN GAMBAR UNTUK DEMO
+       ========================================== */
+
+    /* Demo 1: Tanpa CSS (Default) */
+    .img-default {
+      /* Tidak ada aturan width/height */
+    }
+
+    /* Demo 2: Menggunakan width: 100% */
+    .img-width-100 {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Demo 3: Aturan Emas (max-width: 100% dan height: auto) */
+    .img-golden-rule {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      /* Menghilangkan whitespace di bawah gambar inline */
+    }
+
+    /* Demo 4: Mengunci Tinggi Paksa Tanpa Object-Fit (Gepeng) */
+    .img-distorted {
+      width: 100%;
+      height: 200px;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* object-fit 
+    1. fill : gambar ketarik paksa agar sesuai dengan pembungkus.
+    2. contain : gambar diatur supaya bisa terlihat utuh di dalam pembungkus. Tapi mungkin akan menyisakan ruang kososng
+    3. cover : gambar akan disesuaikan dengan pembungkus. Tidak mengurangi/menambah rasio sehingga gambar tidak pecah. Tetapi gambar sedikit terpotong*/
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>Aturan Emas Gambar Responsif</h1>
+      <p>Perbedaan antara Gambar Default, penggunaan <code>width: 100%</code>, dan <code>max-width: 100%</code>.</p>
+    </header>
+
+    <div class="demo-grid">
+
+      <!-- DEMO 1: DEFAULT IMAGE (OVERFLOW) -->
+      <div class="demo-card">
+        <h2>
+          <span>1. Gambar Tanpa CSS (Default)</span>
+          <span class="badge badge-error">Bug Overflow</span>
+        </h2>
+        <p>Gambar di bawah memiliki resolusi asli lebar 600px. Ketika diletakkan di dalam kontainer yang lebarnya
+          dibatasi hanya <strong>300px</strong> (kotak garis putus-putus merah), gambar akan meluber keluar karena tidak
+          memiliki aturan responsif.</p>
+
+        <div class="box-container box-container-small">
+          <!-- img/elon.jpg memiliki dimensi resolusi yang cukup besar -->
+          <img src="img/elon.jpg" alt="Elon Musk" class="img-default">
+        </div>
+      </div>
+
+      <!-- DEMO 2: WIDTH 100% (STRETCH / BLURRY) -->
+      <div class="demo-card">
+        <h2>
+          <span>2. Menggunakan width: 100%</span>
+          <span class="badge badge-warning">Pecah / Upscaled</span>
+        </h2>
+        <p>Gambar di bawah memiliki resolusi asli 600px, ditaruh di kontainer lebar <strong>800px</strong>. Menggunakan
+          <code>width: 100%</code> memaksa gambar melebar mengikuti kontainer induknya, sehingga gambar menjadi pecah,
+          blur, dan melar melebihi resolusi aslinya.
+        </p>
+
+        <div class="box-container box-container-large">
+          <img src="img/elon.jpg" alt="Elon Musk" class="img-width-100">
+        </div>
+      </div>
+
+      <!-- DEMO 3: GOLDEN RULE (MAX-WIDTH 100%) -->
+      <div class="demo-card">
+        <h2>
+          <span>3. Aturan Emas (max-width: 100% & height: auto)</span>
+          <span class="badge badge-success">Solusi Terbaik</span>
+        </h2>
+        <p>Menggunakan <code>max-width: 100%</code> dan <code>height: auto</code>. Jika kontainer lebih kecil dari
+          ukuran gambar asli, gambar akan mengecil secara fluid. Namun, jika kontainer lebih besar (lebar 800px), gambar
+          <strong>berhenti membesar</strong> di batas resolusi aslinya (600px) sehingga ketajaman gambar tetap terjaga
+          dan tidak blur.
+        </p>
+
+        <div class="box-container box-container-large">
+          <div class="box-container-responsive">
+            <img src="img/elon.jpg" alt="Elon Musk" class="img-golden-rule">
+          </div>
+        </div>
+      </div>
+
+      <!-- DEMO 4: PROBLEM GAMBAR GEPENG (BRIDGING KE OBJECT-FIT) -->
+      <div class="demo-card">
+        <h2>
+          <span>4. Mengunci Tinggi Tetap (Tanpa Object-Fit)</span>
+          <span class="badge badge-error">Problem Gambar Gepeng</span>
+        </h2>
+        <p>Kenapa setelah diberi <code>height: auto</code>, sering kali muncul area kosong di kiri-kanan jika
+          container-nya tinggi? Kenapa tidak sekalian kita beri <code>height: 100%</code> (atau tinggi tetap)? Jika kita
+          memaksa tinggi gambar (misal <code>height: 200px</code> dan <code>width: 100%</code>) tanpa pelindung, gambar
+          akan dipaksa meregang memenuhi kotak dan aspek rasionya hancur (tertarik gepeng).</p>
+
+        <div class="box-container box-container-large" style="max-width: 500px;">
+          <img src="img/elon.jpg" alt="Elon Musk" class="img-distorted">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

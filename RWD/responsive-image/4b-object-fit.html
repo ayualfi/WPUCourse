@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 4b: Eksplorasi Properti Object-Fit</title>
+  <style>
+    /* ==========================================
+       1. CSS RESET & GENERAL STYLES
+       ========================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    header h1 {
+      color: #1e3a8a;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      color: #0f172a;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #3b82f6;
+      padding-left: 15px;
+    }
+
+    /* ==========================================
+       2. GRID LAYOUTS
+       ========================================== */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ==========================================
+       3. COMPONENT STYLING
+       ========================================== */
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+
+    .card-content p {
+      color: #475569;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .badge-error { background-color: #fee2e2; color: #991b1b; }
+    .badge-warning { background-color: #fef3c7; color: #92400e; }
+    .badge-success { background-color: #dcfce7; color: #166534; }
+
+    /* ==========================================
+       4. CSS GAMBAR DEMO (OBJECT-FIT)
+       ========================================== */
+
+    /* Tinggi dikunci 200px agar layout sejajar */
+    .card-img-fit {
+      width: 100%;
+      height: 200px;
+      display: block;
+    }
+
+    /* 1. Default / Fill: Gepeng */
+    .fit-fill {
+      object-fit: fill;
+    }
+
+    /* 2. Contain: Utuh tapi menyisakan ruang kosong */
+    .fit-contain {
+      object-fit: contain;
+      background-color: #0f172a; /* Latar gelap untuk letterbox */
+    }
+
+    /* 3. Cover: Proporsional & Terpotong (Best Practice) */
+    .fit-cover {
+      object-fit: cover;
+    }
+
+    /* Bagian C: Object-Position Demo */
+    .pos-center {
+      object-position: center;
+    }
+
+    .pos-top {
+      object-position: top;
+    }
+
+    .pos-bottom {
+      object-position: bottom;
+    }
+
+    .pos-pct-1 {
+      object-position: 25% 25%;
+    }
+
+    .pos-pct-2 {
+      object-position: 50% 20%;
+    }
+
+    .pos-pct-3 {
+      object-position: 80% 80%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header>
+      <h1>Eksplorasi Properti Object-Fit</h1>
+      <p>Mengatasi masalah foto gepeng akibat penguncian tinggi gambar pada layout kartu.</p>
+    </header>
+
+    <section>
+      <h2>Bagian 1: Perbandingan Properti Object-Fit</h2>
+      <p style="margin-bottom: 25px; color: #475569;">
+        Dalam pembuatan layout seperti <em>card grid</em>, kita seringkali ingin mengunci tinggi gambar (misalnya <code>height: 200px; width: 100%;</code>) agar tinggi kartu sejajar seragam. Berikut adalah perbandingan perilakunya:
+      </p>
+
+      <div class="grid-3">
+
+        <!-- Object-Fit: Fill -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-fill">
+          <div class="card-content">
+            <span class="badge badge-error">object-fit: fill (default)</span>
+            <h3>Gambar Gepeng / Distorsi</h3>
+            <p>Gambar ditarik paksa secara vertikal dan horizontal untuk memenuhi kotak 200px, merusak rasio aspek aslinya.</p>
+          </div>
+        </div>
+
+        <!-- Object-Fit: Contain -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-contain">
+          <div class="card-content">
+            <span class="badge badge-warning">object-fit: contain</span>
+            <h3>Gambar Utuh + Letterbox</h3>
+            <p>Seluruh gambar dipaksa muat ke dalam kotak tanpa terpotong, menyisakan ruang kosong (letterbox) di sisi kiri/kanan.</p>
+          </div>
+        </div>
+
+        <!-- Object-Fit: Cover -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover">
+          <div class="card-content">
+            <span class="badge badge-success">object-fit: cover</span>
+            <h3>Proporsional + Pemotongan (Best Practice)</h3>
+            <p>Gambar mempertahankan rasio aspek aslinya dan memenuhi seluruh kotak 200px dengan memotong bagian tepi yang berlebih.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BAGIAN 2: DEMO OBJECT-POSITION -->
+    <section>
+      <h2>Bagian 2: Mengatur Posisi Gambar (Properti Object-Position)</h2>
+      <p style="margin-bottom: 25px; color: #475569;">
+        Ketika menggunakan <code>object-fit: cover</code>, bagian gambar yang tidak masuk area potong akan dibuang. Secara default, browser mengambil area tengah (<code>center</code>). Kita bisa menggunakan <code>object-position</code> untuk mengatur posisi gambar di dalam wadah:
+      </p>
+
+      <div class="grid-3">
+
+        <!-- Object-Position: Center (Default) -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover pos-center">
+          <div class="card-content">
+            <span class="badge badge-warning">object-position: center (default)</span>
+            <h3>Posisi Tengah</h3>
+            <p>Gambar diposisikan tepat di tengah, memotong sisi atas, bawah, kiri, dan kanan secara seimbang.</p>
+          </div>
+        </div>
+
+        <!-- Object-Position: Top -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover pos-top">
+          <div class="card-content">
+            <span class="badge badge-success">object-position: top</span>
+            <h3>Posisi Atas</h3>
+            <p>Gambar diposisikan dengan memprioritaskan area atas (wajah subjek menjadi lebih jelas terlihat).</p>
+          </div>
+        </div>
+
+        <!-- Object-Position: Bottom -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover pos-bottom">
+          <div class="card-content">
+            <span class="badge badge-error">object-position: bottom</span>
+            <h3>Posisi Bawah</h3>
+            <p>Gambar diposisikan dengan memprioritaskan area bawah (area leher/baju lebih terlihat, bagian kepala atas terpotong).</p>
+          </div>
+        </div>
+
+        <!-- Object-Position: 25% 25% -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover pos-pct-1">
+          <div class="card-content">
+            <span class="badge badge-success">object-position: 25% 25%</span>
+            <h3>Posisi Kustom (25% 25%)</h3>
+            <p>Menggeser gambar lebih dekat ke sisi kiri (25%) dan atas (25%) untuk posisi pemotongan presisi.</p>
+          </div>
+        </div>
+
+        <!-- Object-Position: 50% 20% -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover pos-pct-2">
+          <div class="card-content">
+            <span class="badge badge-success">object-position: 50% 20%</span>
+            <h3>Posisi Kustom (50% 20%)</h3>
+            <p>Mengunci horizontal di tengah (50%) dan menggeser vertikal ke atas (20%) agar area kepala/wajah tetap terlihat jelas.</p>
+          </div>
+        </div>
+
+        <!-- Object-Position: 80% 80% -->
+        <div class="card">
+          <img src="img/elon.jpg" alt="Elon Musk" class="card-img-fit fit-cover pos-pct-3">
+          <div class="card-content">
+            <span class="badge badge-success">object-position: 80% 80%</span>
+            <h3>Posisi Kustom (80% 80%)</h3>
+            <p>Menggeser gambar lebih jauh ke sisi kanan (80%) dan bawah (80%) sesuai koordinat kustom.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
