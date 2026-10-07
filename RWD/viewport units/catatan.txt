@@ -1,0 +1,25 @@
+--> viewport = layar device (hp, laptop, ipad, dll)
+
+Satuan/unit yang bisa digunakan untuk mengatur viewport :
+    1. vw (viewport width)
+      - 1vw = 1% dari LEBAR LAYAR BROWSER
+      - 100vw = 100% dari LEBAR LAYAR BROWSER --> PENUHHH
+    2. vh (viewport height)
+      - 1vw = 1% dari TINGGI LAYAR BROWSER
+      - 100vw = 100% dari TINGGI LAYAR BROWSER --> PENUHHH
+
+    --> Perbedaan dengan % :
+        - % selalu mengacu pada ukuran parent nya(wadahnya), sedangkan vw/vh mengacu pada ukuran BROWSER langsung
+    
+    3. vmin (viewport minimum)
+      - Memilih nilai TERKECIL antara vw dan vh
+    4. vmax (viewport maksimum)
+      - Memilih nilai TERBESAR antara vw dan vh
+
+===========
+Calc --> Digunakan untuk menghitung nilai properti css secara dinamis
+     --> Bisa mencampur berbagai jenis unit asal bisa dikalkulasi secara matematik
+     --> Contoh : 
+          width: Calc (100% - 250px)
+          (Akan mengisi layar setelah di kurangi sidebar statis 250px)
+     --> Gunakan spasi diantara operator

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 5b: Eksplorasi Fungsi calc() Murni</title>
+  <style>
+    /* ==========================================
+       1. CSS RESET & GENERAL STYLES
+       ========================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    header h1 {
+      color: #1e3a8a;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      color: #0f172a;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #3b82f6;
+      padding-left: 15px;
+    }
+
+    /* ==========================================
+       2. GRID LAYOUT (1 Kolom Vertikal Stack)
+       ========================================== */
+    .grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    /* ==========================================
+       3. COMPONENT STYLING & SPLIT LAYOUT
+       ========================================== */
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-content-split {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .card-content-split {
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .code-column {
+        flex: 0 0 35%; /* Kiri: Code Snippet */
+        max-width: 35%;
+      }
+      .info-column {
+        flex: 0 0 65%; /* Kanan: Penjelasan */
+        max-width: 65%;
+        padding-left: 10px;
+      }
+    }
+
+    /* ==========================================
+       4. SYNTAX HIGHLIGHTING (DARK MODE)
+       ========================================== */
+    .code-column pre {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      padding: 18px;
+      border-radius: 8px;
+      font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .code-column code {
+      width: 100%;
+    }
+
+    .hl-selector { color: #f43f5e; font-weight: bold; } /* Pink */
+    .hl-property { color: #38bdf8; } /* Light Blue */
+    .hl-value { color: #f59e0b; } /* Orange */
+    .hl-unit { color: #a855f7; } /* Purple */
+    .hl-func { color: #10b981; } /* Emerald */
+    .hl-comment { color: #64748b; font-style: italic; } /* Grey Comment */
+
+    /* Typography inside Info */
+    .info-column h3 {
+      font-size: 1.3rem;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+
+    .info-column p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .badge-error { background-color: #fee2e2; color: #991b1b; }
+    .badge-success { background-color: #dcfce7; color: #166534; }
+    .badge-info { background-color: #e0f2fe; color: #0369a1; }
+
+    .test-tip {
+      background-color: #f1f5f9;
+      border-left: 4px solid #64748b;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: #334155;
+      border-radius: 0 6px 6px 0;
+      margin-top: 10px;
+    }
+
+    .test-tip strong {
+      color: #0f172a;
+    }
+
+    /* ==========================================
+       5. CSS DEMO COMPONENT VISUALS (calc() Murni)
+       ========================================== */
+
+    .card-demo-columns, .card-demo-sidebar {
+      height: 240px;
+    }
+
+    /* 1. Grid Dua Kolom dengan Celah */
+    .card-demo-columns {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .columns-container {
+      display: flex;
+      width: 100%;
+      gap: 30px; /* Jarak celah = 30px */
+    }
+
+    .col-half {
+      width: calc(50% - 15px); /* Setengah lebar total dikurangi setengah gap */
+      height: 120px;
+      background-color: #3b82f6;
+      color: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .col-half span {
+      font-size: 1.1rem;
+    }
+
+    .col-half small {
+      font-weight: normal;
+      font-size: 0.75rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    /* 2. Sidebar Lebar Tetap & Konten Dinamis */
+    .card-demo-sidebar {
+      background-color: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+    }
+
+    .pure-sidebar {
+      width: 200px; /* Lebar statis */
+      background-color: #1e293b;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: bold;
+      border-right: 1px solid #cbd5e1;
+    }
+
+    .pure-content {
+      width: calc(100% - 200px); /* Lebar sisa dinamis */
+      background-color: #ffffff;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: bold;
+      padding: 20px;
+    }
+
+    .pure-content span {
+      font-weight: normal;
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 8px;
+      background-color: #f1f5f9;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header>
+      <h1>Eksplorasi Fungsi calc() Murni</h1>
+      <p>Belajar melakukan kalkulasi matematis dinamis langsung di dalam CSS untuk merancang tata letak web secara presisi.</p>
+    </header>
+
+    <!-- BAGIAN 1: PERHITUNGAN DINAMIS DENGAN CALC -->
+    <section>
+      <h2>Bagian 1: Penggunaan Fungsi calc() dalam Tata Letak</h2>
+      <p style="margin-bottom: 25px; color: #475569;">
+        Fungsi <code>calc()</code> memungkinkan kita untuk melakukan perhitungan nilai properti CSS (seperti <code>width</code>, <code>margin</code>, <code>padding</code>, dsb). Keunggulan terbesarnya adalah kemampuan mencampur berbagai unit (seperti menggabungkan <code>%</code> dengan <code>px</code>).
+      </p>
+
+      <div class="grid-1">
+
+        <!-- Case 1: Grid Kolom dengan Celah -->
+        <div class="card">
+          <div class="card-demo-columns">
+            <div class="columns-container">
+              <div class="col-half">
+                <span>Kolom Kiri</span>
+                <small>calc(50% - 15px)</small>
+              </div>
+              <div class="col-half">
+                <span>Kolom Kanan</span>
+                <small>calc(50% - 15px)</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.col-half</span> {
+  <span class="hl-property">width</span>: <span class="hl-func">calc</span>(<span class="hl-value">50</span><span class="hl-unit">%</span> - <span class="hl-value">15</span><span class="hl-unit">px</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-success">width: calc(50% - gap/2)</span>
+                <h3>Membagi Kolom Sejajar dengan Celah</h3>
+                <p>Ketika membuat layout 2 kolom dengan celah (gap) sebesar <code>30px</code>, jika kita memberi masing-masing kolom <code>width: 50%</code>, kolom kedua akan terdorong ke bawah. Rumus <code>calc(50% - 15px)</code> memotong setengah dari lebar celah (15px) pada masing-masing kolom sehingga muat sejajar dengan sempurna.</p>
+                <div class="test-tip">
+                  <strong>Penting:</strong> Spasi di sekitar operator kurang (<code>-</code>) dan tambah (<code>+</code>) wajib ditulis. Contoh: <code>calc(50%-15px)</code> tanpa spasi dianggap error oleh browser.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Sidebar Lebar Tetap & Konten Dinamis -->
+        <div class="card">
+          <div class="card-demo-sidebar">
+            <div class="pure-sidebar">
+              Sidebar (200px)
+            </div>
+            <div class="pure-content">
+              Area Konten Utama
+              <span>Lebar Area = calc(100% - 200px)</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.main-content</span> {
+  <span class="hl-property">width</span>: <span class="hl-func">calc</span>(<span class="hl-value">100</span><span class="hl-unit">%</span> - <span class="hl-value">200</span><span class="hl-unit">px</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-info">width: calc(100% - sidebar)</span>
+                <h3>Menggabungkan Persentase dan Piksel</h3>
+                <p>Dalam pembuatan dashboard, kita sering mengunci lebar sidebar (misal: <code>200px</code>) agar menunya tidak bergeser. Dengan <code>calc(100% - 200px)</code>, lebar area konten utama akan otomatis menghitung sisa ruang layar secara dinamis.</p>
+                <div class="test-tip">
+                  <strong>Petunjuk Uji Coba:</strong> Ubah ukuran lebar browser Anda. Kolom sidebar akan tetap selebar 200px sedangkan area konten utama akan melebar/menyempit secara elastis.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

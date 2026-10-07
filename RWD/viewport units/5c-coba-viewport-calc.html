@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 5c: Eksplorasi Viewport Units & Fungsi calc()</title>
+  <style>
+    /* ==========================================
+       1. CSS RESET & GENERAL STYLES
+       ========================================== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 40px 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      /* Padding kiri kanan untuk konten normal */
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    header h1 {
+      color: #1e3a8a;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      color: #0f172a;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #3b82f6;
+      padding-left: 15px;
+    }
+
+    /* ==========================================
+       2. GRID LAYOUT (1 Kolom Vertikal Stack)
+       ========================================== */
+    .grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    /* ==========================================
+       3. COMPONENT STYLING & SPLIT LAYOUT
+       ========================================== */
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-content-split {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .card-content-split {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .code-column {
+        flex: 0 0 35%;
+        /* Kiri: Code Snippet */
+        max-width: 35%;
+      }
+
+      .info-column {
+        flex: 0 0 65%;
+        /* Kanan: Penjelasan */
+        max-width: 65%;
+        padding-left: 10px;
+      }
+    }
+
+    /* ==========================================
+       4. SYNTAX HIGHLIGHTING (DARK MODE)
+       ========================================== */
+    .code-column pre {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      padding: 18px;
+      border-radius: 8px;
+      font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .code-column code {
+      width: 100%;
+    }
+
+    .hl-selector {
+      color: #f43f5e;
+      font-weight: bold;
+    }
+
+    /* Pink */
+    .hl-property {
+      color: #38bdf8;
+    }
+
+    /* Light Blue */
+    .hl-value {
+      color: #f59e0b;
+    }
+
+    /* Orange */
+    .hl-unit {
+      color: #a855f7;
+    }
+
+    /* Purple */
+    .hl-func {
+      color: #10b981;
+    }
+
+    /* Emerald */
+    .hl-comment {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* Gray */
+
+    /* Typography inside Info */
+    .info-column h3 {
+      font-size: 1.3rem;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+
+    .info-column p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .badge-error {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-success {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-info {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .test-tip {
+      background-color: #f1f5f9;
+      border-left: 4px solid #64748b;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: #334155;
+      border-radius: 0 6px 6px 0;
+      margin-top: 10px;
+    }
+
+    .test-tip strong {
+      color: #0f172a;
+    }
+
+    /* ==========================================
+       5. CSS DEMO COMPONENT VISUALS
+       ========================================== */
+
+    .card-demo-hero,
+    .card-demo-text,
+    .card-demo-breakout {
+      height: 240px;
+    }
+
+    /* 1. Hero Banner Sim */
+    .card-demo-hero {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sim-navbar {
+      height: 45px;
+      background-color: #1e293b;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      justify-content: space-between;
+    }
+
+    .sim-navbar-brand {
+      font-size: 0.85rem;
+    }
+
+    .sim-navbar-menu {
+      display: flex;
+      gap: 15px;
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .sim-hero-section {
+      flex: 1;
+      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+        url('img/elon.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .sim-hero-section h4 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .sim-hero-section span {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      background-color: rgba(59, 130, 246, 0.3);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(59, 130, 246, 0.5);
+    }
+
+    /* 2. Fluid Typography Sim */
+    .card-demo-text {
+      background-color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .fluid-title {
+      font-size: calc(1.2rem + 2vw);
+      font-weight: bold;
+      color: #3b82f6;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .fluid-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    /* 3. Responsive Padding Sim */
+    .card-demo-padding {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      padding: calc(15px + 1.5vw);
+      /* Real dynamic padding for simulation */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 240px;
+    }
+
+    .sim-padding-box {
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border: 2px dashed #3b82f6;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1e3a8a;
+      font-size: 0.9rem;
+    }
+
+    /* 4. Responsive Square (vmin) Sim */
+    .card-demo-vmin {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 240px;
+    }
+
+    .sim-square-box {
+      width: calc(60px + 10vmin);
+      height: calc(60px + 10vmin);
+      background-color: #a855f7;
+      color: #ffffff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.8rem;
+      box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* 5. Section Spacing (vmax) Sim */
+    .card-demo-vmax {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 240px;
+      padding: calc(20px + 2vmax) 20px;
+      box-sizing: border-box;
+    }
+
+    .sim-section-content {
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border: 2px dashed #ec4899;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #9d174d;
+      font-size: 0.9rem;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>Eksplorasi Viewport Units & Fungsi calc()</h1>
+      <p>Ketika unit viewport dikolaborasikan dengan fungsi <code>calc()</code>, kita dapat memecahkan masalah layout
+        responsif yang rumit seperti tinggi hero banner dikurangi navbar, tipografi fluid dengan batas aman, hingga
+        elemen meluber (breakout).</p>
+    </header>
+
+    <!-- BAGIAN 1: GABUNGAN VW/VH & CALC -->
+    <section>
+      <h2>Studi Kasus Kombinasi Viewport & calc()</h2>
+
+      <div class="grid-1">
+
+        <!-- Case 1: Hero Banner dengan vh & calc() -->
+        <div class="card">
+          <div class="card-demo-hero">
+            <div class="sim-navbar">
+              <div class="sim-navbar-brand">WPU Space</div>
+              <div class="sim-navbar-menu">Menu | Kontak</div>
+            </div>
+            <div class="sim-hero-section">
+              <h4>Selamat Datang di Portal Pembelajaran</h4>
+              <span>Tinggi Hero = calc(100vh - 45px)</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.hero-banner</span> {
+  <span class="hl-property">min-height</span>: <span class="hl-func">calc</span>(<span class="hl-value">100</span><span class="hl-unit">vh</span> - <span class="hl-value">45</span><span class="hl-unit">px</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-success">min-height: calc(100vh - navbar)</span>
+                <h3>Hero Banner Setinggi Sisa Layar</h3>
+                <p>Mengurangi tinggi navigasi statis (45px) dari tinggi layar penuh (100vh). Trik ini memastikan elemen
+                  hero pas mengisi sisa layar vertikal tanpa memicu kemunculan scrollbar halaman.</p>
+                <div class="test-tip">
+                  <strong>Uji Coba:</strong> Tarik tinggi browser Anda. Banner simulasi di atas akan menyesuaikan
+                  tingginya dengan sempurna tanpa menyisakan ruang kosong.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Fluid Typography dengan vw & calc() -->
+        <div class="card">
+          <div class="card-demo-text">
+            <h2 class="fluid-title">Fluid Text & Batas Aman</h2>
+            <p class="fluid-desc">Ubah lebar browser Anda secara horizontal untuk menguji.</p>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.fluid-title</span> {
+  <span class="hl-property">font-size</span>: <span class="hl-func">calc</span>(<span class="hl-value">1.2</span><span class="hl-unit">rem</span> + <span class="hl-value">2</span><span class="hl-unit">vw</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-info">font-size: calc(1.2rem + 2vw)</span>
+                <h3>Tipografi Fluid dengan Batas Minimum</h3>
+                <p>Menggunakan unit <code>vw</code> agar ukuran teks membesar atau mengecil secara otomatis mengikuti
+                  lebar layar browser. Formula <code>calc(1.2rem + 2vw)</code> memberikan nilai dasar aman sebesar
+                  <code>1.2rem</code> agar teks tidak mengecil secara ekstrem pada layar HP.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3: Responsive Padding dengan calc() & vw -->
+        <div class="card">
+          <div class="card-demo-padding">
+            <div class="sim-padding-box">
+              Padding Area: calc(15px + 1.5vw)
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.responsive-container</span> {
+  <span class="hl-property">padding</span>: <span class="hl-func">calc</span>(<span class="hl-value">15</span><span class="hl-unit">px</span> + <span class="hl-value">1.5</span><span class="hl-unit">vw</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-success">padding: calc(15px + 1.5vw)</span>
+                <h3>Padding Dinamis dengan Batas Aman</h3>
+                <p>Menentukan ruang jarak (padding/margin) dalam elemen yang membesar secara proporsional sesuai lebar
+                  layar browser (<code>1.5vw</code>), namun tetap memiliki batas minimum yang aman sebesar
+                  <code>15px</code> agar konten tidak menempel ke tepi layar pada perangkat HP/mobile.
+                </p>
+                <div class="test-tip">
+                  <strong>Uji Coba:</strong> Ubah lebar browser Anda secara horizontal. Perhatikan bagaimana jarak
+                  (padding) antara kotak biru dan kotak abu-abu di atas menyusut dan melebar secara dinamis dan halus!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 4: Kotak Responsif Multi-Orientasi dengan vmin & calc() -->
+        <div class="card">
+          <div class="card-demo-vmin">
+            <div class="sim-square-box">
+              Avatar / Logo (calc(60px + 10vmin))
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.responsive-square</span> {
+  <span class="hl-property">width</span>: <span class="hl-func">calc</span>(<span class="hl-value">80</span><span class="hl-unit">px</span> + <span class="hl-value">15</span><span class="hl-unit">vmin</span>);
+  <span class="hl-property">height</span>: <span class="hl-func">calc</span>(<span class="hl-value">80</span><span class="hl-unit">px</span> + <span class="hl-value">15</span><span class="hl-unit">vmin</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-info">width/height: calc(80px + 15vmin)</span>
+                <h3>Ukuran Elemen Kuadrat Multi-Orientasi</h3>
+                <p>Mengatur ukuran elemen persegi (seperti foto profil, logo, atau kode QR) agar tetap muat di layar
+                  baik dalam mode portrait (lebar lebih kecil) maupun landscape (tinggi lebih kecil). Rumus ini
+                  memastikan ukuran tidak melebihi tinggi layar pada posisi landscape.</p>
+                <div class="test-tip">
+                  <strong>Uji Coba:</strong> Tarik browser Anda secara horizontal dan vertikal bergantian. Kotak ungu di
+                  atas akan menyesuaikan ukurannya mengikuti dimensi layar yang paling kecil (lebar atau tinggi)!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 5: Section Spacing Premium dengan vmax & calc() -->
+        <div class="card">
+          <div class="card-demo-vmax">
+            <div class="sim-section-content">
+              Area Konten (padding-y: calc(20px + 2vmax))
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.premium-section</span> {
+  <span class="hl-property">padding-top</span>: <span class="hl-func">calc</span>(<span class="hl-value">30</span><span class="hl-unit">px</span> + <span class="hl-value">4</span><span class="hl-unit">vmax</span>);
+  <span class="hl-property">padding-bottom</span>: <span class="hl-func">calc</span>(<span class="hl-value">30</span><span class="hl-unit">px</span> + <span class="hl-value">4</span><span class="hl-unit">vmax</span>);
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-success">padding: calc(30px + 4vmax) 0</span>
+                <h3>Jarak Section Premium (Skala Dimensi Terbesar)</h3>
+                <p>Mengatur padding atas/bawah halaman yang menyesuaikan diri dengan dimensi layar terbesar (lebar atau
+                  tinggi). Teknik ini sering dipakai pada landing page premium agar jarak antar bagian terasa pas dan
+                  lega baik di layar ultra-wide maupun layar monitor tinggi.</p>
+                <div class="test-tip">
+                  <strong>Uji Coba:</strong> Ubah tinggi atau lebar browser Anda. Kotak di atas akan mengecil/membesar
+                  mengikuti perubahan ukuran dimensi layar terbesar Anda!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 5a: Eksplorasi Unit Viewport Murni</title>
+  <style>
+    /* ==========================================
+       1. CSS RESET & GENERAL STYLES
+       ========================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    header h1 {
+      color: #1e3a8a;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      color: #0f172a;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #3b82f6;
+      padding-left: 15px;
+    }
+
+    /* ==========================================
+       2. GRID LAYOUT (1 Kolom Vertikal Stack)
+       ========================================== */
+    .grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    /* ==========================================
+       3. COMPONENT STYLING & SPLIT LAYOUT
+       ========================================== */
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-content-split {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .card-content-split {
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .code-column {
+        flex: 0 0 35%; /* Kiri: Code Snippet */
+        max-width: 35%;
+      }
+      .info-column {
+        flex: 0 0 65%; /* Kanan: Penjelasan */
+        max-width: 65%;
+        padding-left: 10px;
+      }
+    }
+
+    /* ==========================================
+       4. SYNTAX HIGHLIGHTING (DARK MODE)
+       ========================================== */
+    .code-column pre {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      padding: 18px;
+      border-radius: 8px;
+      font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .code-column code {
+      width: 100%;
+    }
+
+    .hl-selector { color: #f43f5e; font-weight: bold; } /* Pink */
+    .hl-property { color: #38bdf8; } /* Light Blue */
+    .hl-value { color: #f59e0b; } /* Orange */
+    .hl-unit { color: #a855f7; } /* Purple */
+
+    /* Typography inside Info */
+    .info-column h3 {
+      font-size: 1.3rem;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+
+    .info-column p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .badge-warning { background-color: #fef3c7; color: #92400e; }
+    .badge-success { background-color: #dcfce7; color: #166534; }
+    .badge-info { background-color: #e0f2fe; color: #0369a1; }
+
+    .test-tip {
+      background-color: #f1f5f9;
+      border-left: 4px solid #64748b;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: #334155;
+      border-radius: 0 6px 6px 0;
+      margin-top: 10px;
+    }
+
+    .test-tip strong {
+      color: #0f172a;
+    }
+
+    /* ==========================================
+       5. CSS DEMO COMPONENT VISUALS (Viewport Murni)
+       ========================================== */
+
+    /* 1. Banner Setengah Layar (30vh) */
+    .card-demo-vh {
+      background-color: #e2e8f0;
+      border-bottom: 1px solid #cbd5e1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .vh-banner {
+      height: 30vh; /* Tinggi murni 30vh */
+      width: 100%;
+      background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.8)), 
+                  url('../responsive-image/img/elon.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .vh-banner h4 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .vh-banner span {
+      font-size: 0.8rem;
+      background-color: rgba(59, 130, 246, 0.4);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(59, 130, 246, 0.6);
+    }
+
+    /* 2. Headline Skala Viewport (6vw) */
+    .card-demo-vw {
+      background-color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 10px;
+      text-align: center;
+    }
+
+    .vw-headline {
+      font-size: 6vw; /* Ukuran font murni 6vw */
+      font-weight: 800;
+      color: #3b82f6;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    /* 3. vmin Box Sim */
+    .card-demo-vmin {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .vmin-box {
+      width: 25vmin; /* Lebar & Tinggi murni 25vmin */
+      height: 25vmin;
+      max-width: 200px;
+      max-height: 200px;
+      background-color: #f59e0b;
+      color: #ffffff;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      text-align: center;
+      padding: 15px;
+    }
+
+    .vmin-box span {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .vmin-box small {
+      font-size: 0.75rem;
+      font-weight: normal;
+      opacity: 0.95;
+    }
+
+    /* 4. vmax Box Sim */
+    .card-demo-vmax {
+      background-color: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .vmax-box {
+      width: 20vmax; /* Lebar & Tinggi murni 20vmax */
+      height: 20vmax;
+      max-width: 200px;
+      max-height: 200px;
+      background-color: #10b981;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      text-align: center;
+      padding: 15px;
+    }
+
+    .vmax-box span {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .vmax-box small {
+      font-size: 0.75rem;
+      font-weight: normal;
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header>
+      <h1>Eksplorasi Unit Viewport Murni</h1>
+      <p>Belajar cara kerja unit responsif modern: vw, vh, vmin, dan vmax secara terpisah sebelum memadukannya dengan fungsi kalkulasi.</p>
+    </header>
+
+    <!-- BAGIAN 1: DEMO VW & VH -->
+    <section>
+      <h2>Bagian 1: Contoh Kasus Viewport Width (vw) & Viewport Height (vh)</h2>
+      <p style="margin-bottom: 25px; color: #475569;">
+        Unit <code>vw</code> (lebar) dan <code>vh</code> (tinggi) mengacu penuh pada ukuran layar browser pengguna. <code>1vw</code> setara dengan 1/100 (1%) dari lebar browser, sedangkan <code>1vh</code> setara dengan 1/100 (1%) dari tinggi browser.
+      </p>
+
+      <div class="grid-1">
+
+        <!-- Case 1: Banner Setengah Layar (vh) -->
+        <div class="card">
+          <div class="card-demo-vh">
+            <div class="vh-banner">
+              <h4>Banner Responsif Vertikal</h4>
+              <span>Tinggi Banner = 30vh</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.hero-banner</span> {
+  <span class="hl-property">height</span>: <span class="hl-value">30</span><span class="hl-unit">vh</span>;
+  <span class="hl-property">width</span>: <span class="hl-value">100</span><span class="hl-unit">%</span>;
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-success">height: 30vh</span>
+                <h3>Tinggi Berbasis Persentase Layar</h3>
+                <p>Mengunci tinggi banner sebesar 30% dari tinggi layar browser. Tinggi banner ini akan secara otomatis memanjang atau memendek mengikuti perubahan tinggi browser secara dinamis.</p>
+                <div class="test-tip">
+                  <strong>Petunjuk Uji Coba:</strong> Tarik browser Anda ke atas/bawah (ubah tinggi layar). Anda akan melihat tinggi banner di atas menyesuaikan secara instan.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Headline Skala Viewport (vw) -->
+        <div class="card">
+          <div class="card-demo-vw">
+            <h1 class="vw-headline">TEXT SCALE 6VW</h1>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.headline</span> {
+  <span class="hl-property">font-size</span>: <span class="hl-value">6</span><span class="hl-unit">vw</span>;
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-info">font-size: 6vw</span>
+                <h3>Tipografi Berskala Lebar Layar</h3>
+                <p>Mengatur ukuran huruf berbasis lebar viewport. Teks akan membesar di layar monitor yang lebar dan mengecil di layar HP secara halus. Tanpa batas minimum, teks ini bisa menjadi sangat kecil di layar HP yang sempit.</p>
+                <div class="test-tip">
+                  <strong>Petunjuk Uji Coba:</strong> Resize lebar browser Anda (horizontal). Teks biru di atas akan ikut membesar dan mengecil secara halus tanpa patah.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BAGIAN 2: DEMO VMIN & VMAX -->
+    <section>
+      <h2>Bagian 2: Contoh Kasus Viewport Minimum (vmin) & Viewport Maximum (vmax)</h2>
+      <p style="margin-bottom: 25px; color: #475569;">
+        Unit <code>vmin</code> akan mengambil nilai terkecil di antara lebar dan tinggi layar browser, sedangkan <code>vmax</code> mengambil nilai terbesar di antara keduanya. Ini sangat berguna dalam menjaga bentuk ornamen agar tidak keluar layar.
+      </p>
+
+      <div class="grid-1">
+
+        <!-- Case 1: vmin untuk Elemen Responsif Proporsional -->
+        <div class="card">
+          <div class="card-demo-vmin">
+            <div class="vmin-box">
+              <span>25vmin</span>
+              <small>Portrait & Landscape Safe</small>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.vmin-box</span> {
+  <span class="hl-property">width</span>: <span class="hl-value">25</span><span class="hl-unit">vmin</span>;
+  <span class="hl-property">height</span>: <span class="hl-value">25</span><span class="hl-unit">vmin</span>;
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-warning">width & height: 25vmin</span>
+                <h3>Mengikuti Dimensi Layar Terkecil</h3>
+                <p>Kotak kuning di atas selalu mengambil nilai terkecil antara <code>vw</code> dan <code>vh</code>. Hal ini menjamin elemen berbentuk bujur sangkar/lingkaran tetap muat seutuhnya tanpa meluber keluar dari layar pada mode Portrait maupun Landscape.</p>
+                <div class="test-tip">
+                  <strong>Petunjuk Uji Coba:</strong> Ubah ukuran browser. Kotak kuning <code>vmin</code> hanya akan mengecil ketika Anda memperkecil <strong>dimensi layar yang paling pendek</strong> di antara lebar dan tinggi browser Anda.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: vmax untuk Elemen Skala Maksimum -->
+        <div class="card">
+          <div class="card-demo-vmax">
+            <div class="vmax-box">
+              <span>20vmax</span>
+              <small>Background & Ornamen</small>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-content-split">
+              <!-- Kiri: Code Snippet -->
+              <div class="code-column">
+                <pre><code><span class="hl-selector">.vmax-box</span> {
+  <span class="hl-property">width</span>: <span class="hl-value">20</span><span class="hl-unit">vmax</span>;
+  <span class="hl-property">height</span>: <span class="hl-value">20</span><span class="hl-unit">vmax</span>;
+}</code></pre>
+              </div>
+              <!-- Kanan: Penjelasan -->
+              <div class="info-column">
+                <span class="badge badge-info">width & height: 20vmax</span>
+                <h3>Mengikuti Dimensi Layar Terbesar</h3>
+                <p>Lingkaran hijau di atas mengambil nilai terbesar di antara lebar dan tinggi layar browser. Hal ini cocok untuk elemen dekoratif latar belakang atau hiasan visual yang dituntut tetap dominan di semua ukuran dan orientasi layar.</p>
+                <div class="test-tip">
+                  <strong>Petunjuk Uji Coba:</strong> Pada layar landscape (lebar > tinggi), perkecil lebar browser secara horizontal. Lingkaran hijau <code>vmax</code> akan mengecil. Namun, memperkecil tinggi browser (selama tingginya masih lebih pendek dari lebarnya) tidak akan mengubah ukuran lingkaran hijau ini sama sekali.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
